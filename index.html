@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Easy Motion elsykkel: feilsøking, girjustering og kontroller-ombygging</title>
+  <meta name="description" content="Steg-for-steg feilsøking av batteri og motorassistanse, justering av bakgir, og en ærlig vurdering av om et display fra en annen sykkel kan styre motoren. Med koblingsskjema for en trygg ombygging.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <div class="wrap">
+    <header class="hero">
+      <p class="kicker">Veiledning</p>
+      <h1>Easy Motion elsykkel med baknavmotor: få assistansen til å virke, juster giret, og hva med annen kontroller?</h1>
+      <p class="lede">Steg-for-steg feilsøking av batteri og motorassistanse, justering av bakgir, og en ærlig vurdering av om et display fra en annen sykkel kan styre motoren. Med koblingsskjema for en trygg ombygging.</p>
+    </header>
+
+    <nav class="toc" aria-label="Innhold">
+      <h2>Innhold</h2>
+      <ol>
+        <li><a href="#kort">Kort fortalt</a></li>
+        <li><a href="#system">Hvilken sykkel og hvilket system</a></li>
+        <li><a href="#sikkerhet">Sikkerhet før du starter</a></li>
+        <li><a href="#assist">Del 1a: Når assistansen ikke virker</a></li>
+        <li class="sub"><a href="#koder">Feilkoder på displayet</a></li>
+        <li class="sub"><a href="#maling">Målinger med multimeter</a></li>
+        <li><a href="#gir">Del 1b: Justere bakgiret</a></li>
+        <li><a href="#display">Del 2: Kan et annet display styre motoren?</a></li>
+        <li><a href="#kobling">Løsning: koblingsskjema for ny kontroller</a></li>
+        <li><a href="#regulator">Idéen om spenningsregulator</a></li>
+        <li><a href="#lov">Lovverk i Norge</a></li>
+        <li><a href="#kilder">Kilder</a></li>
+      </ol>
+    </nav>
+
+    <main id="innhold">
+      <section class="block" id="kort">
+        <h2>Kort fortalt</h2>
+        <div class="callout">
+          <span class="lead">Konklusjon</span>
+          Prøv å reparere originalsystemet først. De fleste feil er skitne kontakter, batteri i dvale, bremsebryter som henger, eller momentsensoren ved bakhjulet. Et display fra Easy Ride, Spark eller lignende vil nesten helt sikkert ikke virke med BH-kontrolleren. Er kontrolleren død, er riktig vei et komplett kontrollersett (kontroller + display + PAS + bremsehendler fra samme leverandør), ikke en spenningsregulator.
+        </div>
+      </section>
+
+      <section class="block" id="system">
+        <h2>Hvilken sykkel og hvilket system</h2>
+        <p>Jeg fant ingen modell som heter nøyaktig «Easy Motion 2». Det mest sannsynlige er BH Easy Motion i Neo- eller Evo-familien (f.eks. Evo Cross, Evo Street, Evo City) med baknavmotor. Sjekk merket på motoren for å være sikker.</p>
+        <dl class="props">
+          <div class="prop"><dt>Produsent</dt><dd>BH Bikes (Spania), merkenavn Easy Motion / BH Emotion</dd></div>
+          <div class="prop"><dt>Spenning</dt><dd><span class="badge ok">36 V (kjent fakta, BH-manual 2012 og EBR 2015)</span></dd></div>
+          <div class="prop"><dt>Batteri</dt><dd>Li-ion, 36 V. Evo 27.5 (2015): 11,6 Ah / 418 Wh, Samsung-celler. Senere: 12 Ah / 432 Wh</dd></div>
+          <div class="prop"><dt>Motor</dt><dd>Børsteløs girnavmotor bak, 350 W merket, begrenset til 250 W i EU. Trolig Dapu M155 (forum: merking «M155 CN3614 (36V)»)</dd></div>
+          <div class="prop"><dt>Sensor for tråkk</dt><dd>Momentsensor TMM4 ved høyre bakgaffel, rett innenfor minste drev. Ikke vanlig magnet-PAS</dd></div>
+          <div class="prop"><dt>Hastighetssignal</dt><dd>Kommer fra motoren selv (ikke eikemagnet)</dd></div>
+          <div class="prop"><dt>Kontroller</dt><dd>Inne i skrårøret over batteriet, BH-spesifikke kontakter</dd></div>
+          <div class="prop"><dt>Display</dt><dd>BH LCD med fjærkontakter i holderen. Seriell kommunikasjon med BH-egne meldinger og sjekksum</dd></div>
+          <div class="prop"><dt>Usikkert</dt><dd><span class="badge warn">Nøyaktig modellår, kontrollerversjon (V1/V2) og pinnefordeling i motorpluggen</span></dd></div>
+        </dl>
+        <figure>
+          <img src="images/hubmotor.jpg" alt="Børsteløs navmotor i bakhjulet på en elsykkel, med kassett og bakgir" width="1280" height="960">
+          <figcaption>Eksempel på baknavmotor (ikke BH). Foto: Ken962, Wikimedia Commons, CC BY-SA 3.0.</figcaption>
+        </figure>
+      </section>
+
+      <section class="block" id="sikkerhet">
+        <h2>Sikkerhet før du starter</h2>
+        <ul class="plain">
+          <li>Ta ut batteriet før du kobler fra eller til noe, og før all kabelarbeid.</li>
+          <li>Kortslutt aldri batteripolene. Et Li-ion-batteri kan levere svært høy strøm og ta fyr.</li>
+          <li>Åpne ikke batteriet og ikke rør BMS-en (batteristyringen). Det er fare for brann.</li>
+          <li>Er batteriet hovent, varmt, lukter brent eller har vært i vann: slutt å bruke det og lever det til forhandler.</li>
+          <li>Lad på et ikke-brennbart underlag, med tilsyn, og bare med original lader.</li>
+          <li>Jeg beskriver ikke hvordan man omgår tyverisikring eller batterilås. Har du mistet nøkkelen, gå til forhandler med kvittering.</li>
+        </ul>
+      </section>
+
+      <section class="block" id="assist">
+        <h2>Del 1a: Når assistansen ikke virker</h2>
+        <p>Gå gjennom rekkefølgen under. Start med det enkle. Test etter hvert steg.</p>
+
+        <div class="flow">
+          <p class="sr">Feilsøkingsflyt: Slår displayet seg på? Hvis nei, sjekk batteri, nøkkel og kontakter (steg 1–4). Deretter: viser det feilkode? Hvis ja, slå opp koden i tabellen under. Hvis nei, eller etter at koden er slått opp: sjekk bremser, sensor og kabler (steg 5–9). Fortsatt feil: BH-verksted.</p>
+          <svg viewBox="0 0 420 640" role="img" aria-labelledby="flow-title">
+            <title id="flow-title">Feilsøkingsflyt for manglende assistanse</title>
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#1c1b18"/>
+              </marker>
+            </defs>
+            <style>
+              .box { fill: #fffdf8; stroke: #1c1b18; stroke-width: 1.6; }
+              .dec { fill: #fffdf8; stroke: #1b4f3a; stroke-width: 1.8; }
+              .term { fill: #1b4f3a; stroke: #1b4f3a; stroke-width: 1.6; }
+              .t { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; fill: #1c1b18; text-anchor: middle; }
+              .tl { font-size: 13px; font-weight: 700; }
+              .td { font-size: 11px; fill: #5a564c; }
+              .tw { font-size: 13px; font-weight: 700; fill: #fffdf8; }
+              .lab { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; font-size: 11px; font-style: italic; fill: #5a564c; }
+            </style>
+            <!-- a decision -->
+            <polygon class="dec" points="210,18 330,70 210,122 90,70"/>
+            <text class="t tl" x="210" y="66">Slår displayet</text>
+            <text class="t tl" x="210" y="84">seg på?</text>
+            <!-- lines a->b nei, a->c ja -->
+            <line x1="120" y1="92" x2="120" y2="150" stroke="#1c1b18" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <text class="lab" x="132" y="128" text-anchor="start">nei</text>
+            <line x1="300" y1="92" x2="300" y2="268" stroke="#1c1b18" stroke-width="1.5"/>
+            <line x1="300" y1="268" x2="248" y2="268" stroke="#1c1b18" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <text class="lab" x="312" y="128" text-anchor="start">ja</text>
+            <!-- b -->
+            <rect class="box" x="40" y="154" width="160" height="70" rx="8"/>
+            <text class="t tl" x="120" y="182">Batteri, nøkkel,</text>
+            <text class="t tl" x="120" y="198">kontakter</text>
+            <text class="t td" x="120" y="216">Steg 1–4</text>
+            <line x1="120" y1="224" x2="120" y2="262" stroke="#1c1b18" stroke-width="1.5"/>
+            <line x1="120" y1="262" x2="171" y2="262" stroke="#1c1b18" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <!-- c decision -->
+            <polygon class="dec" points="210,220 318,272 210,324 102,272"/>
+            <text class="t tl" x="210" y="268">Viser det</text>
+            <text class="t tl" x="210" y="286">feilkode?</text>
+            <!-- c->d ja, c->e nei -->
+            <line x1="300" y1="294" x2="300" y2="352" stroke="#1c1b18" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <text class="lab" x="312" y="328" text-anchor="start">ja</text>
+            <line x1="120" y1="294" x2="120" y2="468" stroke="#1c1b18" stroke-width="1.5"/>
+            <line x1="120" y1="468" x2="171" y2="468" stroke="#1c1b18" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <text class="lab" x="132" y="328" text-anchor="start">nei</text>
+            <!-- d -->
+            <rect class="box" x="220" y="356" width="160" height="70" rx="8"/>
+            <text class="t tl" x="300" y="384">Slå opp koden</text>
+            <text class="t td" x="300" y="406">Tabellen under</text>
+            <line x1="300" y1="426" x2="300" y2="468" stroke="#1c1b18" stroke-width="1.5"/>
+            <line x1="300" y1="468" x2="249" y2="468" stroke="#1c1b18" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <!-- e -->
+            <rect class="box" x="125" y="434" width="170" height="70" rx="8"/>
+            <text class="t tl" x="210" y="462">Bremser, sensor,</text>
+            <text class="t tl" x="210" y="478">kabler</text>
+            <text class="t td" x="210" y="496">Steg 5–9</text>
+            <line x1="210" y1="504" x2="210" y2="542" stroke="#1c1b18" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <!-- f terminal -->
+            <rect class="term" x="95" y="546" width="230" height="56" rx="28"/>
+            <text class="t tw" x="210" y="580">Fortsatt feil: BH-verksted</text>
+          </svg>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <h3>Lad batteriet helt</h3>
+            <p>Bruk original lader. La det stå minst 30 minutter selv om det ikke ser ut som noe skjer. Et batteri i dvale (BMS-beskyttelse) våkner ofte når laderen kobles til. Sjekk LED-indikatoren på batteriet.</p>
+          </li>
+          <li>
+            <h3>Nøkkel og låsing</h3>
+            <p>Batteriet skal klikke helt på plass, og nøkkelen skal stå i kjørestilling. Et batteri som sitter litt løst gir ingen strøm eller strømbrudd på humpete vei.</p>
+          </li>
+          <li>
+            <h3>Rens kontaktene på rammen</h3>
+            <p>Ta ut batteriet. Rens de to store polene og de små kontaktene på holderen i rammen med elektronikk-kontaktspray som er trygg for plast. Sjekk at fjærkontaktene spretter helt ut. Batterisiden: tørk forsiktig og se etter brannmerker.</p>
+          </li>
+          <li>
+            <h3>Sjekk displayet og holderen</h3>
+            <p>Ta av displayet. Trykk lett på hver fjærpinne (f.eks. med viskelær). Pinner som ikke spretter tilbake gir feil 13. Rens med en lett fuktet klut med isopropanol. Ikke stram holderen for hardt.</p>
+          </li>
+          <li>
+            <h3>Start uten fot på pedalen</h3>
+            <p>Momentsensoren kalibreres ved oppstart. Trykk på pedalen under oppstart gir feil 14. Slå av, ta foten bort, slå på igjen.</p>
+          </li>
+          <li>
+            <h3>Bremsebrytere</h3>
+            <p>Hvis motoren aldri gir hjelp, eller et varseltrekant eller bremsesymbol vises hele tiden, kan en bremsebryter henge. Slå av, koble fra én bremsekontakt om gangen ved styret, og test igjen. Smør hendelen, bytt bryter om den henger.</p>
+          </li>
+          <li>
+            <h3>Kontaktene ved styret og motoren</h3>
+            <p>Ved styret: to små kontakter for bremser, én større skrukontakt for display (og gass). Ved bakre kjedestag: motorkontakten. Koble fra, rens, la tørke, koble til med pilene på linje.</p>
+          </li>
+          <li>
+            <h3>Momentsensoren (TMM4) ved bakhjulet</h3>
+            <p>Sitter rett innenfor minste drev. Tørk platen mellom sensor og kjede. Kjedevoks og fett her kan stoppe assistansen. De to små skruene skal bare være lett tiltrukket (ca. 1 Nm). På nyere Evo må sensoren ut for å nå skruene.</p>
+          </li>
+          <li>
+            <h3>Fartsvisning</h3>
+            <p>Viser displayet 0 km/t mens du sykler, går displayet i dvale og assistansen faller ut. Fartssignalet kommer fra motoren. BH sin feilsøkingsguide sier da: sjekk motorkabel, ellers bytt motor.</p>
+          </li>
+        </ol>
+
+        <div class="grid-2">
+          <figure>
+            <img src="images/higo.jpg" alt="Vanntett Higo/Julet-kontakt for elsykkel" width="1280" height="853">
+            <figcaption>Typisk vanntett plugg (Higo/Julet). Foto: -stk, Wikimedia Commons, CC BY-SA 4.0.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/stator.jpg" alt="Innsiden av en navmotor med stator og viklinger" width="1280" height="1203">
+            <figcaption>Inni en navmotor: stator med viklinger og hall-sensorer. Foto: Theosch, Wikimedia Commons, CC BY-SA 4.0.</figcaption>
+          </figure>
+        </div>
+
+        <div class="subblock" id="koder">
+          <h3>Feilkoder på displayet</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Kode</th><th>Betyr</th><th>Hva du gjør</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>01 / 02 / 10</td><td>Overstrøm</td><td>Sjekk motorkontakten. Vedvarer det: kontrolleren</td></tr>
+                <tr><td>03</td><td>Momentsensor (TMM)</td><td>Rens platen, sjekk skruer og kontakt. Sensorsignal skal ligge 0,1–3,5 V</td></tr>
+                <tr><td>04</td><td>Motorfeil</td><td>Sjekk motorkontakt og kontroller</td></tr>
+                <tr><td>05</td><td>Motorsensor (hall)</td><td>Rens motorkontakten. Vedvarer det: motor eller kontroller</td></tr>
+                <tr><td>08</td><td>Lavt batteri</td><td>Lad. Sjekk at batteri og kontakter sitter fast</td></tr>
+                <tr><td>09</td><td>Motor blokkert</td><td>Sjekk motorkabelen der den går ut av akselen</td></tr>
+                <tr><td>11 / 12</td><td>Overoppheting</td><td>La systemet kjøle seg ned</td></tr>
+                <tr><td>13</td><td>Kommunikasjon</td><td>Display, displayholder, kabel. Rens fjærpinnene</td></tr>
+                <tr><td>14</td><td>Pedalfeil</td><td>Start på nytt uten fot på pedalen</td></tr>
+                <tr><td>15</td><td>Sensorfeil</td><td>Juster momentsensoren (verksted)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Kilde: BH Emotion brukermanual (PDF datert 2. aug. 2012) og BH «Ebike diagnosis flows» (PDF datert 28. mai 2015). Kodene kan variere litt mellom modellår.</p>
+        </div>
+
+        <div class="subblock" id="maling">
+          <h3>Målinger med multimeter</h3>
+          <figure>
+            <img src="images/d1_batteri.png" alt="Diagram: måle batterispenning med multimeter, med forventede spenningsområder for 36 V Li-ion" width="1576" height="746">
+          </figure>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Måling</th><th>Forventet</th><th>Hvis ikke</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Batteri, fulladet</td><td>41–42 V</td><td>Under 40 V rett etter lading: lader eller batteri</td></tr>
+                <tr><td>Batteri, i bruk</td><td>33–40 V</td><td>Under ca. 33 V: lad</td></tr>
+                <tr><td>Batteri, 0 V på polene</td><td>BMS i dvale eller nøkkel av</td><td>Sett på lader 30 min. Fortsatt 0 V: verksted</td></tr>
+                <tr><td>Batteri under ca. 30 V</td><td>Dyputladet</td><td>Ikke tving lading. Lever til batterispesialist</td></tr>
+                <tr><td>Laderens utgang</td><td>Ca. 42 V uten last</td><td>Noen smarte ladere viser 0 V før de ser et batteri</td></tr>
+                <tr><td>Momentsensor i ro</td><td>0,6–2 V (BH testverktøy)</td><td>Utenfor: kalibrer eller bytt sensor (verksted)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Spenningene gjelder et vanlig 36 V Li-ion-batteri med 10 celler i serie (4,2 V per celle fullt). Nøyaktige BMS-grenser for BH-batteriet er ikke publisert, så de nederste tallene er estimater.</p>
+          <figure>
+            <img src="images/multimeter.jpg" alt="Digitalt multimeter som måler spenningen på et batteri" width="1280" height="960">
+            <figcaption>Sett multimeteret på DC-spenning. Foto: Jiazheng0609, Wikimedia Commons, CC BY-SA 4.0.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="block" id="gir">
+        <h2>Del 1b: Justere bakgiret</h2>
+        <figure>
+          <img src="images/d2_bakgir.png" alt="Diagram over bakgir: H- og L-skrue, B-skrue, strammeskrue, vaierklemme, og trinsens plassering under minste og største drev" width="1596" height="838">
+        </figure>
+        <div class="callout warning">
+          <span class="lead">Easy Motion-spesifikt</span>
+          Momentsensoren og motorkabelen sitter ved bakhjulet. Ta ut batteriet og koble fra motorkabelen før du tar ut hjulet. Ikke trekk til sensorskruene hardt.
+        </div>
+        <ol class="steps">
+          <li>
+            <h3>Sjekk girøret (hangeren)</h3>
+            <p>Se bakfra. Girøret og bakgiret skal henge rett ned, parallelt med drevene. Bøyd girøre gir dårlig gir uansett justering. Bytt det eller få det rettet på verksted.</p>
+          </li>
+          <li>
+            <h3>Sett giret på minste drev</h3>
+            <p>Gir ned til minste drev (tyngste gir). Skru strammeskruen (barrel adjuster) helt inn, og så ut én omdreining.</p>
+          </li>
+          <li>
+            <h3>Juster H-skruen</h3>
+            <p>Øvre trinse skal stå rett under minste drev. Skru H-skruen inn for å flytte giret innover, ut for å flytte det utover.</p>
+          </li>
+          <li>
+            <h3>Stram vaieren</h3>
+            <p>Løsne vaierklemmebolten. Trekk vaieren stramt med hånden. Trekk til bolten (vanlig 5–7 Nm, sjekk girets merking).</p>
+          </li>
+          <li>
+            <h3>Juster L-skruen</h3>
+            <p>Gå til største drev. Øvre trinse skal stå rett under største drev, og giret skal ikke kunne gå inn i eikene. Skru L-skruen inn hvis det går for langt.</p>
+          </li>
+          <li>
+            <h3>B-skruen</h3>
+            <p>På største drev: avstanden mellom øvre trinse og drevtennene skal være ca. 5–6 mm. Skru B-skruen inn for mer avstand. Sjekk manualen for ditt gir.</p>
+          </li>
+          <li>
+            <h3>Indeksering</h3>
+            <p>Gir ett klikk opp fra minste drev. Går ikke kjedet over: skru strammeskruen ut en kvart omdreining. Hopper det to drev: skru inn. Ulyder: finjuster i kvarte omdreininger.</p>
+          </li>
+          <li>
+            <h3>Test</h3>
+            <p>Gå gjennom alle gir, opp og ned, først i stativ, så under last med motoren av. Prøv så med assistanse.</p>
+          </li>
+        </ol>
+        <div class="grid-2">
+          <figure>
+            <img src="images/derailleur.jpg" alt="Shimano Deore bakgir sett fra siden" width="1280" height="1412">
+            <figcaption>Bakgir med justeringsskruer. Foto: Armchair, Wikimedia Commons, CC BY-SA 3.0.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/barrel.jpg" alt="Strammeskrue (barrel adjuster) på bakgiret" width="1280" height="960">
+            <figcaption>Strammeskruen der vaieren går inn i giret. Foto: Armchair, Wikimedia Commons, CC BY-SA 3.0.</figcaption>
+          </figure>
+        </div>
+        <figure>
+          <img src="images/hanger.jpg" alt="Kontroll av om girøret er rett, sett bakfra" width="1280" height="1707">
+          <figcaption>Sjekk at girøret er rett. Foto: User:O, Wikimedia Commons, CC BY 3.0.</figcaption>
+        </figure>
+      </section>
+
+      <section class="block" id="display">
+        <h2>Del 2: Kan et annet display styre motoren?</h2>
+        <div class="callout danger">
+          <span class="lead">Svar: nei, ikke direkte</span>
+          Displayet på en elsykkel er ikke en bryter. Det snakker med kontrolleren via en digital protokoll. BH bruker sin egen protokoll med egne meldinger og sjekksum. Et display fra en annen produsent forstår ikke disse meldingene, og kontrolleren vil ikke gi strøm til motoren.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>System</th><th>Protokoll</th><th>Kontakt</th><th>Med BH?</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>BH Easy Motion (Neo/Evo)</td><td>Seriell, BH-egen, sjekksum</td><td>Fjærpinner i holder + BH-kabel</td><td><span class="badge ok">Original</span></td></tr>
+              <tr><td>KT (KT-LCD3/4/8)</td><td>KT seriell (UART)</td><td>Julet/Higo 5-pin</td><td><span class="badge danger">Nei</span></td></tr>
+              <tr><td>Bafang DP-serie</td><td>UART eller CAN, etter modell</td><td>Higo 5-pin</td><td><span class="badge danger">Nei</span></td></tr>
+              <tr><td>S866 / Lishui m.fl.</td><td>Egne UART-varianter</td><td>SM / Julet</td><td><span class="badge danger">Nei</span></td></tr>
+              <tr><td>«Easy Ride»</td><td>Ukjent. Ett merke med navnet bruker Bafang CAN</td><td>Ukjent</td><td><span class="badge danger">Nesten sikkert nei</span></td></tr>
+              <tr><td>«Spark» / Sparke</td><td>Ukjent. Sparke er norsk elsparkesykkel, 60 V</td><td>Ukjent</td><td><span class="badge danger">Nei, feil spenning</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="plain">
+          <li>Fakta: BH-displayet kommuniserer serielt med kontrolleren. Et åpent verktøy (pye-motion, GitHub, 2017) leser disse meldingene og regner sjekksum.</li>
+          <li>Fakta: BH-kontrolleren håndterer også TMM4-momentsensoren. Et fremmed display kan ikke erstatte det.</li>
+          <li>Usikkert: Hvilken «Easy Ride» og «Spark» du har. Les merket på displayet eller kontrolleren, så kan jeg sjekke nøyaktig.</li>
+          <li>Eneste display som passer: BH sitt eget, f.eks. V4 sidedisplay (delenr. 386128300), som BH-forhandlere selger.</li>
+        </ul>
+      </section>
+
+      <section class="block" id="kobling">
+        <h2>Løsning: koblingsskjema for ny kontroller</h2>
+        <p>Hvis BH-kontrolleren er død og ikke kan skaffes, kan du bytte hele styringen. Motoren er en vanlig børsteløs motor med hall-sensorer. Den bryr seg ikke om hvilken kontroller som driver den. Displayet må da følge den nye kontrolleren.</p>
+        <figure>
+          <img src="images/d3_kobling.png" alt="Koblingsskjema: batteri med sikring til generisk 36 V BLDC-kontroller, tre fasekabler og hall-kabel til navmotor, display, bremsehendler, gass og PAS-sensor" width="1775" height="1159">
+        </figure>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Del</th><th>Krav</th><th>Merknad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Kontroller</td><td>36 V, 15–17 A, sinus, hall-sensorert</td><td>Gjerne med selvlæring av fase/hall-rekkefølge</td></tr>
+              <tr><td>Display</td><td>Samme merke som kontrolleren</td><td>F.eks. KT-LCD3 til KT. Kjøp i sett</td></tr>
+              <tr><td>PAS-sensor</td><td>Tråkkfrekvens, 12 magneter</td><td>Erstatter TMM4. Monteres ved krankboks</td></tr>
+              <tr><td>Bremsehendler</td><td>Med bryter (2 ledere)</td><td>Samme kontakttype som kontrolleren</td></tr>
+              <tr><td>Sikring</td><td>20 A, i pluss-ledningen</td><td>Nær batteriet</td></tr>
+              <tr><td>Kabler</td><td>1,5–2,5 mm² for batteri og faser</td><td>Bruk riktige plugger, ikke tvinn sammen</td></tr>
+              <tr><td>Gass (valgfritt)</td><td>Hall-gass</td><td>Bare opptil 6 km/t lovlig på vei</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ol class="steps">
+          <li>
+            <h3>Dokumenter alt</h3>
+            <p>Ta bilder av alle kontakter og ledninger før du kobler fra. Merk hver ledning med tape.</p>
+          </li>
+          <li>
+            <h3>Finn fasene</h3>
+            <p>Motorkabelen har tre tykke ledere. Mål motstand mellom hvert par med batteriet ute: alle tre par skal vise like lav verdi.</p>
+          </li>
+          <li>
+            <h3>Finn hall-lederne</h3>
+            <p>Fem tynne ledere: +5 V, GND og tre signaler. Med 5 V tilført skal hvert signal veksle mellom ca. 0 og 5 V når du dreier hjulet sakte.</p>
+          </li>
+          <li>
+            <h3>Lag overgang, ikke kapp originalen</h3>
+            <p>Lag en adapterkabel mellom BH-pluggen og den nye kontrolleren. Da kan du gå tilbake.</p>
+          </li>
+          <li>
+            <h3>Koble alt, sikring sist</h3>
+            <p>Følg skjemaet som følger kontrolleren. Fargene varierer mellom produsenter.</p>
+          </li>
+          <li>
+            <h3>Første test</h3>
+            <p>Hjulet fritt i stativ. Lav assistanse. Bruk selvlæring hvis kontrolleren har det. Ellers prøv fase/hall-kombinasjoner til motoren går jevnt og stille og trekker lite strøm.</p>
+          </li>
+          <li>
+            <h3>Still inn grensene</h3>
+            <p>Sett fartsgrense 25 km/t og hjulstørrelse riktig i displayets innstillinger.</p>
+          </li>
+        </ol>
+        <div class="proscons">
+          <div class="pc pros">
+            <h3>Fordeler</h3>
+            <ul>
+              <li>Deler er lett å få tak i</li>
+              <li>Billigere enn BH-originaldeler</li>
+              <li>Mange innstillinger i displayet</li>
+            </ul>
+          </div>
+          <div class="pc cons">
+            <h3>Ulemper</h3>
+            <ul>
+              <li>Du mister momentsensoren og får tråkkfrekvens-PAS</li>
+              <li>Kontrolleren må monteres utenpå rammen</li>
+              <li>Garantien bortfaller</li>
+              <li>Feil kobling kan ødelegge motor og kontroller</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="regulator">
+        <h2>Idéen om spenningsregulator</h2>
+        <p>Idéen var å lage en fartskontroll med en spenningsregulator som justerer strømmen inn i de tre fasene. Det vil ikke virke.</p>
+        <figure>
+          <img src="images/d4_inverter.png" alt="Prinsippskisse av 3-fase inverter: batteri, sikring, kondensator, seks MOSFET-er i tre halvbroer, gate-driver, mikrokontroller med hall-, gass- og bremsesignal, og motor" width="1764" height="998">
+        </figure>
+        <ul class="plain">
+          <li>En børsteløs motor har ingen børster som bytter strøm. Kontrolleren må gjøre det, mange hundre ganger i sekundet.</li>
+          <li>Hall-sensorene forteller hvor rotoren står. Kontrolleren slår på riktig fasepar i riktig retning, og bytter når rotoren har flyttet seg.</li>
+          <li>Seks transistorer (MOSFET-er) i tre halvbroer gjør byttet. Gass eller PAS styrer hvor lenge de er på (PWM), og det gir mer eller mindre kraft.</li>
+          <li>En spenningsregulator gir bare én fast likespenning. Fasene får ikke noe roterende felt. Motoren står stille, låser seg og blir varm.</li>
+          <li>Strømmen er 15–20 A. Det er høy effekt med fare for brann. Selv erfarne bygger sjelden dette selv.</li>
+        </ul>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Hall A-B-C</th><th>Fase +</th><th>Fase −</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1-0-1</td><td>U</td><td>V</td></tr>
+              <tr><td>1-0-0</td><td>U</td><td>W</td></tr>
+              <tr><td>1-1-0</td><td>V</td><td>W</td></tr>
+              <tr><td>0-1-0</td><td>V</td><td>U</td></tr>
+              <tr><td>0-1-1</td><td>W</td><td>U</td></tr>
+              <tr><td>0-0-1</td><td>W</td><td>V</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Tabellen viser prinsippet for seks-trinns styring. Den nøyaktige rekkefølgen avhenger av motoren. En ferdig kontroller tar seg av dette.</p>
+        <div class="callout">
+          <span class="lead">Anbefaling</span>
+          Kjøp en ferdig kontroller. Den har strømbegrensning, temperaturvern, bremsekutt og fartsgrense innebygget. Den koster mindre enn det et selvbygd kort ender på, og er tryggere.
+        </div>
+      </section>
+
+      <section class="block" id="lov">
+        <h2>Lovverk i Norge</h2>
+        <p>Statens vegvesen (lest 18.11.2026): En elsykkel må ha maks 0,25 kW nominell motoreffekt, gi kraft bare når du tråkker, og koble ut ved 25 km/t. Ren motordrift er lov opp til 6 km/t. Ellers er den en moped, med krav om førerkort, registrering og forsikring. En ombygget sykkel som går over disse grensene kan bare brukes utenfor offentlig vei.</p>
+      </section>
+
+      <section class="block" id="kilder">
+        <h2>Kilder</h2>
+        <div class="sources">
+          <a class="source" href="https://www.ashlandelectricbikes.com/wp-content/uploads/Easy-Motion-Neo-Manual.pdf">
+            <span class="title">BH Emotion brukermanual (feilkoder, 36 V, 25 km/t)</span>
+            <span class="meta">ashlandelectricbikes.com · 2. aug. 2012</span>
+          </a>
+          <a class="source" href="https://www.bhbikes.com/download/bancorecursos/EBIKE%20DIAGNOSIS%20TOOL%20EN.pdf">
+            <span class="title">BH Ebike diagnosis flows (testverktøy, feilsøking)</span>
+            <span class="meta">bhbikes.com · 28. mai 2015</span>
+          </a>
+          <a class="source" href="https://electricbikereview.com/easy-motion/evo-27-5/">
+            <span class="title">Easy Motion Evo 27.5 Review (36 V, 11,6 Ah, Dapu)</span>
+            <span class="meta">electricbikereview.com · 2015</span>
+          </a>
+          <a class="source" href="https://www.bhbikes.com/download/bancorecursos/tec_cat/EVO_Cat.pdf">
+            <span class="title">BH EVO-katalog (350 W motor, 432 Wh batteri)</span>
+            <span class="meta">bhbikes.com</span>
+          </a>
+          <a class="source" href="https://forums.electricbikereview.com/threads/known-issues-problems-with-easy-motion-products-help-solutions-fixes.13108/page-3">
+            <span class="title">Known issues with Easy Motion (kontakter, feil 9, 13, 14)</span>
+            <span class="meta">forums.electricbikereview.com</span>
+          </a>
+          <a class="source" href="https://forums.electricbikereview.com/threads/code-03.27854/">
+            <span class="title">Code 03 (momentsensor, skruer ca. 1 Nm)</span>
+            <span class="meta">forums.electricbikereview.com</span>
+          </a>
+          <a class="source" href="https://forums.electricbikereview.com/threads/how-do-i-delimit-my-evo-cross-is-it-simple-to-do-for-a-novice.2991/">
+            <span class="title">Evo Cross motor M155 CN3614, kontroller i skrårøret</span>
+            <span class="meta">forums.electricbikereview.com</span>
+          </a>
+          <a class="source" href="https://github.com/nasrudin2468/pye-motion">
+            <span class="title">pye-motion: leser BH EVO display–kontroller-meldinger</span>
+            <span class="meta">github.com · 2017</span>
+          </a>
+          <a class="source" href="https://www.servicecourse.us/products/bh-easymotion-evo-eco-display-unit">
+            <span class="title">BH V4 sidedisplay 386128300 (kompatibilitet)</span>
+            <span class="meta">servicecourse.us</span>
+          </a>
+          <a class="source" href="https://endless-sphere.com/sphere/threads/kt-controller-puzzle.116233/">
+            <span class="title">KT-kontroller: PAS, gass, hall og fart</span>
+            <span class="meta">endless-sphere.com</span>
+          </a>
+          <a class="source" href="https://endless-sphere.com/sphere/threads/unknown-contoller.73358/">
+            <span class="title">KT-kontroller krever KT-display</span>
+            <span class="meta">endless-sphere.com</span>
+          </a>
+          <a class="source" href="https://www.vegvesen.no/trafikkinformasjon/trafikksikkerhet/sikker-pa-sykkel/tekniske-krav/">
+            <span class="title">Tekniske krav til sykkel og elsykkel</span>
+            <span class="meta">vegvesen.no · lest 18.11.2026</span>
+          </a>
+        </div>
+        <p>Bilder: Wikimedia Commons, lisenser oppgitt under hvert bilde. Diagrammene er laget for denne siden.</p>
+      </section>
+
+      <footer class="site-footer">
+        <p>Statisk veiledning uten byggetrinn. Wikimedia-bildene beholder lisensen som er oppgitt i bildeteksten.</p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

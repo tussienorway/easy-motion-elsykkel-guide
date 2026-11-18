@@ -1,7 +1,7 @@
-# Easy Motion elsykkel-guide
+# BH Emotion Evo Cross – veiledning
 
-Statisk veiledning på norsk bokmål for feilsøking av batteri og motorassistanse, justering av bakgir, og ombygging av kontroller på BH Easy Motion / BH Emotion med baknavmotor.
+Statisk veiledning på norsk bokmål for BH Emotion Evo Cross (også solgt som Easy Motion Evo Cross): feilsøking av batteri, display og motorassistanse, justering av bakgir, og koblingsskjema for originalsystemet og for ny kontroller.
 
-Åpne `index.html` i en nettleser, eller se den publiserte siden via GitHub Pages.
+Åpne `index.html` i en nettleser, eller se den publiserte GitHub Pages-siden.
 
-Bildene fra Wikimedia Commons beholder lisensen som er oppgitt i hver bildetekst. Diagrammene er laget for denne veiledningen.
+Bildene fra Wikimedia Commons beholder lisensen som er oppgitt i hver bildetekst. Diagrammene er laget for denne veiledningen. Videoene i `videos/` er AI-genererte illustrasjoner.

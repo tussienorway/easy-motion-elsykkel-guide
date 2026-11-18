@@ -509,3 +509,41 @@ tr:nth-child(even) td { background: #f8f5ee; }
   }
   a { color: inherit; text-decoration: none; }
 }
+
+/* Tillegg for oppdatert Evo Cross-guide */
+section.block.core {
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow), 0 0 0 4px var(--accent-soft);
+}
+.badge.meas { background: #e8eef6; color: #1e3a8a; }
+.badge.hyp { background: #f3e8ff; color: #5b21b6; }
+.badge.src { background: var(--ok-soft); color: var(--ok); }
+.video-wrap {
+  margin: 0;
+  background: #111;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+.video-wrap video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #111;
+}
+figure.media {
+  margin: 0 0 1.15rem;
+}
+figure.media .video-wrap + figcaption,
+figure.media figcaption {
+  border-top: 0;
+}
+.note {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  margin: 0 0 1rem;
+}

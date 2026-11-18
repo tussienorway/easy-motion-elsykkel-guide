@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Easy Motion elsykkel: feilsøking, girjustering og kontroller-ombygging</title>
-  <meta name="description" content="Steg-for-steg feilsøking av batteri og motorassistanse, justering av bakgir, og en ærlig vurdering av om et display fra en annen sykkel kan styre motoren. Med koblingsskjema for en trygg ombygging.">
+  <title>BH Emotion Evo Cross: feilsøking, girjustering og koblingsskjema</title>
+  <meta name="description" content="Steg-for-steg-veiledning for BH Emotion Evo Cross (også solgt som Easy Motion Evo Cross): feilsøking av batteri, display og motorassistanse, justering av bakgir, og koblingsskjema for originalsystemet og for ny kontroller.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,54 +12,65 @@
   <div class="wrap">
     <header class="hero">
       <p class="kicker">Veiledning</p>
-      <h1>Easy Motion elsykkel med baknavmotor: få assistansen til å virke, juster giret, og hva med annen kontroller?</h1>
-      <p class="lede">Steg-for-steg feilsøking av batteri og motorassistanse, justering av bakgir, og en ærlig vurdering av om et display fra en annen sykkel kan styre motoren. Med koblingsskjema for en trygg ombygging.</p>
+      <h1>BH Emotion Evo Cross: få assistansen til å virke, juster giret, og forstå koblingen</h1>
+      <p class="lede">Steg-for-steg feilsøking av batteri, display og motorassistanse, justering av bakgir, og koblingsskjema for originalsystemet og for en eventuell ny kontroller. Skrevet for at en nybegynner skal kunne følge det. Fakta, eierens egne målinger og hypoteser er merket hver for seg.</p>
     </header>
-
     <nav class="toc" aria-label="Innhold">
       <h2>Innhold</h2>
       <ol>
         <li><a href="#kort">Kort fortalt</a></li>
         <li><a href="#system">Hvilken sykkel og hvilket system</a></li>
         <li><a href="#sikkerhet">Sikkerhet før du starter</a></li>
-        <li><a href="#assist">Del 1a: Når assistansen ikke virker</a></li>
+        <li><a href="#kobling-original">Koblingsskjema for Evo Cross</a></li>
+        <li class="sub"><a href="#fastvare">Programvare og fastvare</a></li>
+        <li><a href="#assist">Når assistansen ikke virker</a></li>
+        <li><a href="#display-dodt">Displayet er dødt</a></li>
         <li class="sub"><a href="#koder">Feilkoder på displayet</a></li>
         <li class="sub"><a href="#maling">Målinger med multimeter</a></li>
-        <li><a href="#gir">Del 1b: Justere bakgiret</a></li>
-        <li><a href="#display">Del 2: Kan et annet display styre motoren?</a></li>
-        <li><a href="#kobling">Løsning: koblingsskjema for ny kontroller</a></li>
+        <li><a href="#sensor">Sensorspenning 0,62 V</a></li>
+        <li><a href="#varm">Motorkontrolleren er varm</a></li>
+        <li><a href="#gir">Justere bakgiret</a></li>
+        <li><a href="#armskjell">Hva betyr «armskjell»?</a></li>
+        <li><a href="#video">Video: stramme giret og bytte gir</a></li>
+        <li><a href="#display">Kan et annet display styre motoren?</a></li>
+        <li><a href="#kobling">Koblingsskjema for ny kontroller</a></li>
         <li><a href="#regulator">Idéen om spenningsregulator</a></li>
         <li><a href="#lov">Lovverk i Norge</a></li>
         <li><a href="#kilder">Kilder</a></li>
       </ol>
     </nav>
-
     <main id="innhold">
       <section class="block" id="kort">
         <h2>Kort fortalt</h2>
         <div class="callout">
           <span class="lead">Konklusjon</span>
-          Prøv å reparere originalsystemet først. De fleste feil er skitne kontakter, batteri i dvale, bremsebryter som henger, eller momentsensoren ved bakhjulet. Et display fra Easy Ride, Spark eller lignende vil nesten helt sikkert ikke virke med BH-kontrolleren. Er kontrolleren død, er riktig vei et komplett kontrollersett (kontroller + display + PAS + bremsehendler fra samme leverandør), ikke en spenningsregulator.
+          Prøv å reparere originalsystemet først. De fleste feil er skitne kontakter, batteri i dvale, bremsebryter som henger, eller momentsensoren ved bakhjulet. Et display fra et annet merke vil nesten helt sikkert ikke virke med BH-kontrolleren. Er kontrolleren død, er riktig vei et komplett kontrollersett (kontroller, display, PAS og bremsehendler fra samme leverandør), ikke en spenningsregulator.
         </div>
       </section>
 
       <section class="block" id="system">
         <h2>Hvilken sykkel og hvilket system</h2>
-        <p>Jeg fant ingen modell som heter nøyaktig «Easy Motion 2». Det mest sannsynlige er BH Easy Motion i Neo- eller Evo-familien (f.eks. Evo Cross, Evo Street, Evo City) med baknavmotor. Sjekk merket på motoren for å være sikker.</p>
+        <p>Det offisielle navnet som brukes her er <strong>BH Emotion Evo Cross</strong>. Produsenten er BH Bikes (Beistegui Hermanos) i Spania. I BH sine egne dokumenter heter elsykkellinjen BH EMOTION, og modellen heter Evo Cross (produktkode ev705 på BH sin nettside). Sykkelen ble også solgt som <strong>Easy Motion Evo Cross</strong>, særlig i USA. «BHI Motion» er ikke et merkenavn som er funnet i kildene; det er mest sannsynlig en misforståelse av «BH Easy Motion» eller «BH Emotion». Navnet «Easy Motion 2» er ikke brukt, fordi det ikke er funnet som offisiell modellbetegnelse.</p>
         <dl class="props">
-          <div class="prop"><dt>Produsent</dt><dd>BH Bikes (Spania), merkenavn Easy Motion / BH Emotion</dd></div>
-          <div class="prop"><dt>Spenning</dt><dd><span class="badge ok">36 V (kjent fakta, BH-manual 2012 og EBR 2015)</span></dd></div>
-          <div class="prop"><dt>Batteri</dt><dd>Li-ion, 36 V. Evo 27.5 (2015): 11,6 Ah / 418 Wh, Samsung-celler. Senere: 12 Ah / 432 Wh</dd></div>
-          <div class="prop"><dt>Motor</dt><dd>Børsteløs girnavmotor bak, 350 W merket, begrenset til 250 W i EU. Trolig Dapu M155 (forum: merking «M155 CN3614 (36V)»)</dd></div>
-          <div class="prop"><dt>Sensor for tråkk</dt><dd>Momentsensor TMM4 ved høyre bakgaffel, rett innenfor minste drev. Ikke vanlig magnet-PAS</dd></div>
-          <div class="prop"><dt>Hastighetssignal</dt><dd>Kommer fra motoren selv (ikke eikemagnet)</dd></div>
+          <div class="prop"><dt>Offisielt navn</dt><dd><span class="badge src">BH Emotion Evo Cross</span> (BH-manual 2012, BH ev705-side). Også solgt som Easy Motion Evo Cross.</dd></div>
+          <div class="prop"><dt>Produsent</dt><dd>BH Bikes (Spania)</dd></div>
+          <div class="prop"><dt>Spenning</dt><dd><span class="badge src">36 V</span> (BH-manual 2. aug. 2012; Electric Bike Review 2015; BH ev705: 36 V / 12 Ah, 432 Wh)</dd></div>
+          <div class="prop"><dt>Batteri</dt><dd>Li-ion, 36 V. Senere Evo Cross: 12 Ah / 432 Wh ifølge BH. En Evo 27.5 fra 2015 er oppgitt med 11,6 Ah / 418 Wh.</dd></div>
+          <div class="prop"><dt>Motor</dt><dd>Børsteløs baknavmotor, system Evo RDS. 350 W merket, begrenset til 250 W i EU. Foruminnlegg nevner merking «M155 CN3614 (36V)»; sjekk merket på din motor.</dd></div>
+          <div class="prop"><dt>Sensor for tråkk</dt><dd>Momentsensor TMM4 ved høyre bakgaffel, rett innenfor minste drev. Ikke vanlig magnet-PAS. <span class="badge src">Kilde: BH 2012 og 2015</span></dd></div>
+          <div class="prop"><dt>Hastighetssignal</dt><dd>Kommer fra motoren selv (ikke eikemagnet), ifølge BH-feilsøking.</dd></div>
           <div class="prop"><dt>Kontroller</dt><dd>Inne i skrårøret over batteriet, BH-spesifikke kontakter</dd></div>
-          <div class="prop"><dt>Display</dt><dd>BH LCD med fjærkontakter i holderen. Seriell kommunikasjon med BH-egne meldinger og sjekksum</dd></div>
-          <div class="prop"><dt>Usikkert</dt><dd><span class="badge warn">Nøyaktig modellår, kontrollerversjon (V1/V2) og pinnefordeling i motorpluggen</span></dd></div>
+          <div class="prop"><dt>Display</dt><dd>BH LCD, avtakbart, med fjærkontakter i holderen. Seriell kommunikasjon med BH-egne meldinger. Start og stopp: SET-knappen i 3 sekunder (BH-manual 2012).</dd></div>
+          <div class="prop"><dt>Gir</dt><dd>Ifølge BH ev705-spesifikasjonen: Shimano Acera girhendlere, Shimano Alivio 8-gir bakgir, Shimano Altus 3-delt frontdreir, kassett Shimano HG41 8-gir (11–32T). Eksakt modellnummer på giret er ikke oppgitt der. Sjekk merkingen på din sykkel; det kan variere mellom årsmodeller.</dd></div>
+          <div class="prop"><dt>Usikkert</dt><dd><span class="badge warn">Nøyaktig modellår, kontrollerversjon (V1/V2) og pinnefordeling i motorpluggen og displayholderen</span></dd></div>
         </dl>
+        <div class="callout">
+          <span class="lead">2012-manualen</span>
+          En offentlig BH EMOTION-brukermanual er datert 2. august 2012 (PDF, opprinnelig utgitt av BH). Den dekker Neo/Emotion-systemet med 36 V, TMM-momentsensor, displaybetjening og feilkoder. Evo Cross kom noen år senere, men bruker samme type RDS-baknavsystem. Noen detaljer (batterikapasitet, hurtigkobling på bakhjulet) kan derfor avvike. Eieren opplyser at produsenten fortsatt anser 2012-manualen som gyldig; det er eierens opplysning, ikke noe som er bekreftet direkte med BH her. Hvis du har din egen kopi, kan den gjerne deles, så kan detaljene sjekkes mot den.
+        </div>
         <figure>
           <img src="images/hubmotor.jpg" alt="Børsteløs navmotor i bakhjulet på en elsykkel, med kassett og bakgir" width="1280" height="960">
-          <figcaption>Eksempel på baknavmotor (ikke BH). Foto: Ken962, Wikimedia Commons, CC BY-SA 3.0.</figcaption>
+          <figcaption>Eksempel på baknavmotor (ikke nødvendigvis BH). Foto: Ken962, Wikimedia Commons, CC BY-SA 3.0.</figcaption>
         </figure>
       </section>
 
@@ -71,15 +82,44 @@
           <li>Åpne ikke batteriet og ikke rør BMS-en (batteristyringen). Det er fare for brann.</li>
           <li>Er batteriet hovent, varmt, lukter brent eller har vært i vann: slutt å bruke det og lever det til forhandler.</li>
           <li>Lad på et ikke-brennbart underlag, med tilsyn, og bare med original lader.</li>
-          <li>Jeg beskriver ikke hvordan man omgår tyverisikring eller batterilås. Har du mistet nøkkelen, gå til forhandler med kvittering.</li>
+          <li>Denne veiledningen beskriver ikke hvordan man omgår tyverisikring eller batterilås. Har du mistet nøkkelen, gå til forhandler med kvittering.</li>
         </ul>
       </section>
-
+      <section class="block core" id="kobling-original">
+        <h2>Koblingsskjema for Evo Cross</h2>
+        <p>Dette er kjernen i siden: hvordan originalsystemet henger sammen. Kontrolleren sitter i skrårøret og er knutepunktet. Den får strøm fra batteriet, snakker med displayet, leser momentsensor og bremsebrytere, og driver navmotoren med tre faseledere og hall-sensorer.</p>
+        <figure>
+          <img src="images/d5_original_kobling.png" alt="Koblingsskjema for originalsystemet på BH Emotion Evo Cross: batteri, kontroller i skrårøret, display, bremsebrytere, momentsensor TMM4, og baknavmotor med tre faser og hall-sensorer. Stiplede linjer er uverifiserte detaljer." width="1818" height="1235">
+          <figcaption>Funksjonsfarger, ikke offisiell BH-pinnefordeling. Stiplede linjer og den gule rammen markerer det som ikke er verifisert. Diagram laget for denne siden, basert på BH-manualen 2012, BH «Ebike diagnosis flows» 2015 og BH ev705-spesifikasjonen.</figcaption>
+        </figure>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Del</th><th>Hva den gjør</th><th>Hva som er kjent</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Batteri 36 V</td><td>Gir likespenning til kontrolleren via pol- og signalkontakter i rammen, med nøkkellås</td><td><span class="badge src">Kjent</span> 36 V-system</td></tr>
+              <tr><td>Kontroller</td><td>Styrer motoren og kommuniserer med display og sensorer</td><td><span class="badge src">Kjent</span> plassering i skrårøret. Pinnefordeling <span class="badge warn">ikke publisert</span></td></tr>
+              <tr><td>Display</td><td>På, av og assistansenivå. SET i 3 sekunder starter eller stopper systemet</td><td><span class="badge src">BH-manual 2012</span>. Fjærpinnenes rekkefølge er uverifisert</td></tr>
+              <tr><td>Momentsensor TMM4</td><td>Leser kjedetrekk / kraft på pedalen og gir et analogt spenningssignal</td><td><span class="badge src">BH 2012 og 2015</span></td></tr>
+              <tr><td>Hastighet</td><td>Fra motoren, ikke fra en magnet på eika</td><td><span class="badge src">BH-feilsøking</span>. Hvilken leder i pluggen er uverifisert</td></tr>
+              <tr><td>Bremsebrytere</td><td>Kutter assistansen når du bremser</td><td>Vanlig på dette systemet; nøyaktig kontakt-type kan variere</td></tr>
+              <tr><td>Navmotor</td><td>Tre tykke faseledere og typisk fem tynne hall-ledere</td><td>Vanlig børsteløs oppbygning. BH-pluggens pinneplan er <span class="badge warn">uverifisert</span></td></tr>
+              <tr><td>Lys og gass</td><td>(+)-knappen styrer lys og bakgrunnslys. Gass inntil 6 km/t finnes på noen versjoner</td><td><span class="badge src">2012-manualen</span>. Kablingen på den enkelte Evo Cross er ikke kartlagt her</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">BH-forhandlere har et eget diagnose- og programmeringsverktøy. I BH-dokumentet fra 2015 nevnes en hvit og svart programmeringskabel til kontrolleren. Hvor den sitter på sykkelen, er ikke kartlagt her.</p>
+        <div class="subblock" id="fastvare">
+          <h3>Programvare og fastvare</h3>
+          <p><span class="badge src">Kjent fra BH 2015:</span> Forhandlere kan endre noen kontrollerinnstillinger med «Personal Settings Software»: effektnivå per assistansegrad, startrespons og startakselerasjon. Det krever BH sitt eget utstyr og kabel. Det er ikke funnet noen offentlig metode for å lese ut eller laste inn selve fastvaren. Et åpent verktøy (pye-motion, 2017) kan lese de serielle meldingene mellom display og kontroller og sjekke sjekksum; det skriver ikke ny fastvare.</p>
+          <p>Den realistiske veien hvis originalstyringen er død, er derfor enten originale BH-deler, eller et komplett ettermarked-sett der kontroller og display hører sammen. Se <a href="#kobling">koblingsskjema for ny kontroller</a>.</p>
+        </div>
+      </section>
       <section class="block" id="assist">
-        <h2>Del 1a: Når assistansen ikke virker</h2>
+        <h2>Når assistansen ikke virker</h2>
         <p>Gå gjennom rekkefølgen under. Start med det enkle. Test etter hvert steg.</p>
-
-        <div class="flow">
+<div class="flow">
           <p class="sr">Feilsøkingsflyt: Slår displayet seg på? Hvis nei, sjekk batteri, nøkkel og kontakter (steg 1–4). Deretter: viser det feilkode? Hvis ja, slå opp koden i tabellen under. Hvis nei, eller etter at koden er slått opp: sjekk bremser, sensor og kabler (steg 5–9). Fortsatt feil: BH-verksted.</p>
           <svg viewBox="0 0 420 640" role="img" aria-labelledby="flow-title">
             <title id="flow-title">Feilsøkingsflyt for manglende assistanse</title>
@@ -158,11 +198,11 @@
           </li>
           <li>
             <h3>Sjekk displayet og holderen</h3>
-            <p>Ta av displayet. Trykk lett på hver fjærpinne (f.eks. med viskelær). Pinner som ikke spretter tilbake gir feil 13. Rens med en lett fuktet klut med isopropanol. Ikke stram holderen for hardt.</p>
+            <p>Ta av displayet. Trykk lett på hver fjærpinne (f.eks. med viskelær). Pinner som ikke spretter tilbake gir feil 13. Rens med en lett fuktet klut med isopropanol. Ikke stram holderen for hardt. Se også <a href="#display-dodt">Displayet er dødt</a>.</p>
           </li>
           <li>
             <h3>Start uten fot på pedalen</h3>
-            <p>Momentsensoren kalibreres ved oppstart. Trykk på pedalen under oppstart gir feil 14. Slå av, ta foten bort, slå på igjen.</p>
+            <p>Momentsensoren kalibreres ved oppstart. BH-manualen 2012 sier: vent 2 sekunder etter påslag før du tråkker. Trykk på pedalen under oppstart gir feil 14. Slå av, ta foten bort, slå på igjen.</p>
           </li>
           <li>
             <h3>Bremsebrytere</h3>
@@ -181,21 +221,54 @@
             <p>Viser displayet 0 km/t mens du sykler, går displayet i dvale og assistansen faller ut. Fartssignalet kommer fra motoren. BH sin feilsøkingsguide sier da: sjekk motorkabel, ellers bytt motor.</p>
           </li>
         </ol>
-
-        <div class="grid-2">
+<div class="grid-2">
           <figure>
             <img src="images/higo.jpg" alt="Vanntett Higo/Julet-kontakt for elsykkel" width="1280" height="853">
-            <figcaption>Typisk vanntett plugg (Higo/Julet). Foto: -stk, Wikimedia Commons, CC BY-SA 4.0.</figcaption>
+            <figcaption>Typisk vanntett plugg (Higo/Julet), som eksempel. Original BH-plugg kan se annerledes ut. Foto: -stk, Wikimedia Commons, CC BY-SA 4.0.</figcaption>
           </figure>
           <figure>
             <img src="images/stator.jpg" alt="Innsiden av en navmotor med stator og viklinger" width="1280" height="1203">
             <figcaption>Inni en navmotor: stator med viklinger og hall-sensorer. Foto: Theosch, Wikimedia Commons, CC BY-SA 4.0.</figcaption>
           </figure>
         </div>
-
-        <div class="subblock" id="koder">
-          <h3>Feilkoder på displayet</h3>
-          <div class="table-wrap">
+      </section>
+      <section class="block" id="display-dodt">
+        <h2>Displayet er dødt</h2>
+        <p>Med «dødt display» menes at skjermen ikke viser noe når du prøver å slå på systemet: helt svart, uten bakgrunnslys, og uten feilkode. Gå stegvis. Det som er hentet fra BH er merket, resten er vanlig feilsøking.</p>
+        <ol class="steps">
+          <li>
+            <h3>Bekreft at batteriet er våkent og har spenning</h3>
+            <p>Lås batteriet helt inn, sett nøkkelen i kjørestilling, og mål likespenning på de to store polene (se <a href="#maling">målinger</a>). Et fulladet 36 V-batteri ligger typisk rundt 41–42 V. 0 V tyder på dvale eller at nøkkelen er av. Sett på original lader i minst 30 minutter og mål igjen. <span class="badge src">Generelt for 36 V Li-ion, pluss BH-praksis for dvale</span></p>
+          </li>
+          <li>
+            <h3>Slå på med SET-knappen</h3>
+            <p>Ifølge BH-manualen fra 2012 aktiveres og deaktiveres systemet ved å holde SET-knappen inne i 3 sekunder. Vent 2 sekunder etter påslag før du tråkker. Et helt svart display etter dette er noe annet enn et display som lyser og viser feilkode. <span class="badge src">BH-manual 2012</span></p>
+          </li>
+          <li>
+            <h3>Skille bakgrunnslys fra manglende strøm</h3>
+            <p>Samme manual sier at (+)-knappen slår på sykkelens lys og bakgrunnslyset i displayet. Hvis du hører et klikk, eller lysene på sykkelen tennes, mens skjermen fortsatt er svart, kan displayet ha strøm men defekt panel. Hvis verken lys, bakgrunnslys eller tall vises, er det mer sannsynlig at displayet ikke får strøm eller ikke får startsignal. <span class="badge src">Knappen er dokumentert</span> <span class="badge warn">tolkningen av utfallet er generell</span></p>
+          </li>
+          <li>
+            <h3>Ta av displayet og sjekk fjærpinnene</h3>
+            <p>Displayet er avtakbart: trykk inn klaffen under og skyv det opp av holderen (BH-manual 2012). Trykk lett på hver fjærpinne og sjekk at den spretter tilbake. Rens pinnene og holderen. Korrosjon eller en pinne som sitter fast gir ofte kommunikasjonsfeil (kode 13) når displayet ellers virker, men kan også gi helt svart skjerm. <span class="badge src">Avtaking: BH 2012</span> <span class="badge src">Kode 13: sjekk kabler og kontakter, BH 2015</span></p>
+          </li>
+          <li>
+            <h3>Kabelen fra holder til kontroller</h3>
+            <p>Følg kabelen fra displayholderen inn mot rammen og kontrolleren. Se etter knekk, oksid og kontakter som ikke er klikket helt i. BH sin flyt for kommunikasjonsfeil (kode 13) går gjennom display, displayholder, kontroller og tilkoblingssett. <span class="badge src">BH diagnosis 2015</span></p>
+          </li>
+          <li>
+            <h3>Kontroller og eventuell sikring</h3>
+            <p>I BH-dokumentet fra 2015, under «Other errors: Controller», er tiltaket ved «Display does not switch on. Screen flash» å bytte kontrolleren, og hvis det ikke hjelper, å omprogrammere kontrollerinnstillingene med forhandlerverktøyet. Om det sitter en utskiftbar sikring på denne kontrolleren, er ikke beskrevet der. Ikke åpne kontrolleren på måfå. <span class="badge src">BH 2015</span></p>
+          </li>
+          <li>
+            <h3>Test med et kjent godt BH-display</h3>
+            <p>BH sin egen feilsøking for kommunikasjonsfeil starter med å bytte display og se om det nye virker. Displayet må være et BH-display til samme system, ikke et tilfeldig merke. Se <a href="#display">hvorfor fremmede display ikke passer</a>. <span class="badge src">BH 2015</span></p>
+          </li>
+        </ol>
+      </section>
+      <section class="block" id="koder">
+        <h2>Feilkoder på displayet</h2>
+<div class="table-wrap">
             <table>
               <thead>
                 <tr><th>Kode</th><th>Betyr</th><th>Hva du gjør</th></tr>
@@ -207,19 +280,19 @@
                 <tr><td>05</td><td>Motorsensor (hall)</td><td>Rens motorkontakten. Vedvarer det: motor eller kontroller</td></tr>
                 <tr><td>08</td><td>Lavt batteri</td><td>Lad. Sjekk at batteri og kontakter sitter fast</td></tr>
                 <tr><td>09</td><td>Motor blokkert</td><td>Sjekk motorkabelen der den går ut av akselen</td></tr>
-                <tr><td>11 / 12</td><td>Overoppheting</td><td>La systemet kjøle seg ned</td></tr>
+                <tr><td>11 / 12</td><td>Overoppheting</td><td>Se <a href="#varm">Motorkontrolleren er varm</a></td></tr>
                 <tr><td>13</td><td>Kommunikasjon</td><td>Display, displayholder, kabel. Rens fjærpinnene</td></tr>
                 <tr><td>14</td><td>Pedalfeil</td><td>Start på nytt uten fot på pedalen</td></tr>
                 <tr><td>15</td><td>Sensorfeil</td><td>Juster momentsensoren (verksted)</td></tr>
               </tbody>
             </table>
           </div>
-          <p>Kilde: BH Emotion brukermanual (PDF datert 2. aug. 2012) og BH «Ebike diagnosis flows» (PDF datert 28. mai 2015). Kodene kan variere litt mellom modellår.</p>
-        </div>
-
-        <div class="subblock" id="maling">
-          <h3>Målinger med multimeter</h3>
-          <figure>
+          <p>Kilde: BH Emotion brukermanual (PDF datert 2. aug. 2012) og BH «Ebike diagnosis flows» (28. mai 2015). Kodene kan variere litt mellom modellår.</p>
+        
+      </section>
+      <section class="block" id="maling">
+        <h2>Målinger med multimeter</h2>
+<figure>
             <img src="images/d1_batteri.png" alt="Diagram: måle batterispenning med multimeter, med forventede spenningsområder for 36 V Li-ion" width="1576" height="746">
           </figure>
           <div class="table-wrap">
@@ -233,43 +306,113 @@
                 <tr><td>Batteri, 0 V på polene</td><td>BMS i dvale eller nøkkel av</td><td>Sett på lader 30 min. Fortsatt 0 V: verksted</td></tr>
                 <tr><td>Batteri under ca. 30 V</td><td>Dyputladet</td><td>Ikke tving lading. Lever til batterispesialist</td></tr>
                 <tr><td>Laderens utgang</td><td>Ca. 42 V uten last</td><td>Noen smarte ladere viser 0 V før de ser et batteri</td></tr>
-                <tr><td>Momentsensor i ro</td><td>0,6–2 V (BH testverktøy)</td><td>Utenfor: kalibrer eller bytt sensor (verksted)</td></tr>
+                <tr><td>Momentsensor i ro</td><td>0,6–2 V på BH sitt testverktøy; arbeidsområde 0,1–3,5 V</td><td>Utenfor: kalibrer eller bytt sensor (verksted). <span class="badge src">BH 2015 / 2012</span></td></tr>
               </tbody>
             </table>
           </div>
-          <p>Spenningene gjelder et vanlig 36 V Li-ion-batteri med 10 celler i serie (4,2 V per celle fullt). Nøyaktige BMS-grenser for BH-batteriet er ikke publisert, så de nederste tallene er estimater.</p>
+          <p>Spenningene for batteriet gjelder et vanlig 36 V Li-ion-batteri med 10 celler i serie (4,2 V per celle fullt). Nøyaktige BMS-grenser for BH-batteriet er ikke publisert, så de nederste batteritallene er estimater. TMM-tallene er derimot BH sine egne.</p>
           <figure>
             <img src="images/multimeter.jpg" alt="Digitalt multimeter som måler spenningen på et batteri" width="1280" height="960">
             <figcaption>Sett multimeteret på DC-spenning. Foto: Jiazheng0609, Wikimedia Commons, CC BY-SA 4.0.</figcaption>
           </figure>
+        
+      </section>
+      <section class="block" id="sensor">
+        <h2>Sensorspenning 0,62 V</h2>
+        <p><span class="badge meas">Eierens måling</span> Eieren har målt 0,62 V i ro på én sensor, og mistenker at det er sensoren som har med «spinnen» / tråkket å gjøre.</p>
+        <p><span class="badge hyp">Hypotese, ikke bekreftet</span> Det er ikke fastslått hvilken kontakt som ble målt, eller mellom hvilke pinner. Nedenfor er typiske hvileverdier for de aktuelle sensortypene, slik at målingen kan sammenlignes. 0,62 V i ro passer dårlig med en ren av/på-sensor, og bedre med et analogt hvilenivå. Det er likevel ikke bevis for at det er TMM-sensoren.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Sensortype</th><th>Typisk i ro</th><th>Passer 0,62 V?</th><th>Slik skiller du dem</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>BH TMM / momentsensor</td>
+                <td>BH oppgir 0,6–2 V på testverktøyet i ro, og 0,1–3,5 V som normalt arbeidsområde</td>
+                <td>0,62 V ligger helt i nedre kant av BH sitt hvileområde. Det er forenlig, men beviser det ikke</td>
+                <td>Hold hjulet i ro og press pedalen bakover eller framover uten å spinne rundt. Et momentsignal skal typisk endre seg med kraft, ikke bare med rotasjon. <span class="badge src">BH 2012 og 2015</span></td>
+              </tr>
+              <tr>
+                <td>Hall-gass (håndtak)</td>
+                <td>Typisk rundt 0,8–0,9 V i ro, og stiger mot ca. 3,5–4,2 V ved fullt pådrag</td>
+                <td>0,62 V er lavere enn det vanlige hvilenivået. Det utelukker ikke en gass, men er ikke typisk</td>
+                <td>Vri eller skyv gassen (hvis sykkelen har en) og se om spenningen stiger jevnt. <span class="badge src">Grin Grinfineon-manual: 0,9–3,6 V. Vanlige hall-gasser beskrives ofte med ca. 0,8 V i ro</span></td>
+              </tr>
+              <tr>
+                <td>PAS / tråkkfrekvens (magnetskive)</td>
+                <td>Vanligvis et digitalt signal som hopper mellom ca. 0 V og ca. 5 V mens du tråkker rundt</td>
+                <td>Et jevnt 0,62 V i ro er typisk ikke slik en enkel PAS oppfører seg</td>
+                <td>Drei pedalen sakte en hel runde. En PAS skal gi pulser, ikke en jevn analog spenning. Evo Cross har ifølge BH momentsensor, ikke denne typen som standard</td>
+              </tr>
+              <tr>
+                <td>Hall-sensorer i motoren</td>
+                <td>Hvert signals leder er typisk enten nær 0 V eller nær 5 V. De bytter når hjulet dreies sakte</td>
+                <td>0,62 V er ikke et typisk digitalt hall-nivå</td>
+                <td>Drei bakhjulet sakte og se om verdien hopper mellom lav og høy. Tre hall-signaler skal veksle, ikke stå i 0,62 V</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+        <p>Praktisk test, med batteriet sikret og uten at hjulet kan kjøre av gårde: mål den samme ledningen i ro, mens du bare presser på pedalen, mens du dreier pedalen sakte, og mens du dreier bakhjulet sakte. Hvilken bevegelse som endrer tallet, sier mer enn hvilenivået alene.</p>
       </section>
 
+      <section class="block" id="varm">
+        <h2>Motorkontrolleren er varm</h2>
+        <p>Eieren merker at motorkontrolleren blir ganske varm. Kontrolleren sitter inne i skrårøret, der varmen slipper dårlig ut, så en viss varme etter kjøring kan være vanlig. Det er ikke det samme som at den er for varm.</p>
+        <p><span class="badge src">BH «Ebike diagnosis flows», 2015:</span> Feil 11 og 12 handler om overoppheting. I feilkode-tabellen står feil 11 som «motor over-heat alarm» over 100 °C (strømmen trappes ned) og feil 12 som «motor over-heat protection» over 120 °C (kontrolleren stopper). Selve feilsøkingsflyten for 11/12 har derimot tittelen «controller over-heat protection» og sier: avkjøl kontrolleren til under 35 °C, og kontakt leverandør hvis feilen blir værende. Dokumentet er altså ikke helt entydig på om føleren sitter i motoren eller i kontrolleren. Begge kan bli varme.</p>
+        <div class="callout warning">
+          <span class="lead">Sikkerhet</span>
+          Stopp å sykle og slutt å lade hvis kontrolleren eller motoren er så varm at du knapt kan holde hånden på røret, hvis det lukter brent, eller hvis batteriet er hovent eller unormalt varmt. La det avkjøles på et ildsikkert underlag. Gjenta feil 11 eller 12 etter avkjøling er grunn til verksted, ikke mer prøvekjøring.
+        </div>
+        <ul class="plain">
+          <li><strong>Normal:</strong> Lunken eller varm etter en bakke, uten lukt, uten feilkode, og den avkjøles i ro.</li>
+          <li><strong>Unormal:</strong> Svært varm etter kort tur, feil 11/12, brent lukt, ujevn gange, eller at rammen ved skrårøret blir for varm å holde i.</li>
+          <li><strong>Mulige årsaker, som sjekk — ikke som diagnose:</strong> hengende brems som gjør at motoren jobber mot motstand, dårlig motorkontakt, hall-feil som gir høyt strømtrekk (feil 05), kort eller skadet fase, eller skadet effekttrinn i kontrolleren (ofte feil 01, 02 eller 10). Feil kabling etter inngrep kan gi det samme.</li>
+          <li><strong>Måling:</strong> Et IR-termometer på røret over kontrolleren gir en pekepinn, men viser overflatetemperatur, ikke nødvendigvis den indre. BH sin flyt bruker 35 °C som mål etter avkjøling. Et tangamperemeter på plussledningen kan vise om strømmen er unormalt høy i ro eller under lett tråkk; typiske tall for akkurat denne kontrolleren er ikke publisert, så sammenlign med at den skal trekke lite i ro.</li>
+          <li><strong>Når bytte:</strong> Hvis feil 11/12 kommer tilbake etter at kontrolleren er avkjølt under 35 °C, peker BH sin flyt mot leverandør/bytte. En kontroller som lukter brent, eller som gir overstrømsfeil etter at kabler er sjekket, bør ikke brukes videre.</li>
+        </ul>
+      </section>
       <section class="block" id="gir">
-        <h2>Del 1b: Justere bakgiret</h2>
+        <h2>Justere bakgiret</h2>
+        <p>BH ev705-spesifikasjonen oppgir Shimano Alivio 8-gir bakgir og Shimano Acera girhendlere. Eksakt modellnummer står ikke der, så sjekk merkingen på giret ditt. Bildene under er av et Shimano Deore, som er bygd på samme måte: de samme skruene sitter på Alivio og Acera, selv om formen er litt annerledes.</p>
         <figure>
           <img src="images/d2_bakgir.png" alt="Diagram over bakgir: H- og L-skrue, B-skrue, strammeskrue, vaierklemme, og trinsens plassering under minste og største drev" width="1596" height="838">
         </figure>
+        <figure>
+          <img src="images/derailleur-skruer.jpg" alt="Shimano Deore bakgir med merking av endestoppskruer H og L, typisk plassering av B-skrue, strammeskrue, vaierklemmebolt og monteringsbolt" width="1480" height="1612">
+          <figcaption>H- og L-skruene er de to endestoppskruene på siden; sjekk om de er merket H og L på ditt gir, og gjett ikke hvilken som er hvilken. B-skruen sitter typisk inne ved girøret; pilen viser vanlig plassering, sjekk på ditt gir. Foto: Armchair, Wikimedia Commons, CC BY-SA 3.0, merket for denne siden.</figcaption>
+        </figure>
+        <div class="grid-2">
+          <figure>
+            <img src="images/barrel-merket.jpg" alt="Nærbilde av strammeskruen (barrel adjuster) der vaierhuset går inn i bakgiret, med merking av vaierhus, strammeskrue og girvaier" width="1460" height="1140">
+            <figcaption>Strammeskruen der vaieren går inn i giret. Den skrus med fingrene, uten verktøy. Ut (mot klokken, sett fra vaierhuset) strammer vaieren. Foto: Armchair, Wikimedia Commons, CC BY-SA 3.0, merket for denne siden.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/derailleur.jpg" alt="Shimano Deore bakgir sett fra siden, uten merking" width="1280" height="1412">
+            <figcaption>Samme bakgir uten merking, så du ser delene tydelig. Foto: Armchair, Wikimedia Commons, CC BY-SA 3.0.</figcaption>
+          </figure>
+        </div>
         <div class="callout warning">
-          <span class="lead">Easy Motion-spesifikt</span>
+          <span class="lead">Evo Cross-spesifikt</span>
           Momentsensoren og motorkabelen sitter ved bakhjulet. Ta ut batteriet og koble fra motorkabelen før du tar ut hjulet. Ikke trekk til sensorskruene hardt.
         </div>
         <ol class="steps">
           <li>
             <h3>Sjekk girøret (hangeren)</h3>
-            <p>Se bakfra. Girøret og bakgiret skal henge rett ned, parallelt med drevene. Bøyd girøre gir dårlig gir uansett justering. Bytt det eller få det rettet på verksted.</p>
+            <p>Se bakfra. Girøret og bakgiret skal henge rett ned, parallelt med drevene. Bøyd girøre gir dårlig gir uansett justering. Bytt det eller få det rettet på verksted. Se også <a href="#armskjell">bildene av girøret</a>.</p>
           </li>
           <li>
             <h3>Sett giret på minste drev</h3>
-            <p>Gir ned til minste drev (tyngste gir). Skru strammeskruen (barrel adjuster) helt inn, og så ut én omdreining.</p>
+            <p>Gir ned til minste drev (tyngste gir). Skru strammeskruen helt inn, og så ut én omdreining.</p>
           </li>
           <li>
             <h3>Juster H-skruen</h3>
-            <p>Øvre trinse skal stå rett under minste drev. Skru H-skruen inn for å flytte giret innover, ut for å flytte det utover.</p>
+            <p>Øvre trinse skal stå rett under minste drev. Skru H-skruen inn for å flytte giret innover, ut for å flytte det utover. Er skruene umerket: skru på én av dem mens kjedet står på minste drev, og se hvilken som flytter giret. Det er H-skruen.</p>
           </li>
           <li>
             <h3>Stram vaieren</h3>
-            <p>Løsne vaierklemmebolten. Trekk vaieren stramt med hånden. Trekk til bolten (vanlig 5–7 Nm, sjekk girets merking).</p>
+            <p>Løsne vaierklemmebolten. Trekk vaieren stramt med hånden. Trekk til bolten. Shimano oppgir typisk 6–7 N·m for vaierklemmebolten på mange av sine bakgir; sjekk hva som passer på ditt (ofte 4 mm unbrako, noen eldre 5 mm). Se verktøytabellen under <a href="#video">videoavsnittet</a>.</p>
           </li>
           <li>
             <h3>Juster L-skruen</h3>
@@ -277,7 +420,7 @@
           </li>
           <li>
             <h3>B-skruen</h3>
-            <p>På største drev: avstanden mellom øvre trinse og drevtennene skal være ca. 5–6 mm. Skru B-skruen inn for mer avstand. Sjekk manualen for ditt gir.</p>
+            <p>På største drev: avstanden mellom øvre trinse og drevtennene skal være ca. 5–6 mm ifølge Shimanos MTB-bakgirmanual. Skru B-skruen inn for mer avstand. Sjekk manualen for ditt gir.</p>
           </li>
           <li>
             <h3>Indeksering</h3>
@@ -288,23 +431,106 @@
             <p>Gå gjennom alle gir, opp og ned, først i stativ, så under last med motoren av. Prøv så med assistanse.</p>
           </li>
         </ol>
-        <div class="grid-2">
-          <figure>
-            <img src="images/derailleur.jpg" alt="Shimano Deore bakgir sett fra siden" width="1280" height="1412">
-            <figcaption>Bakgir med justeringsskruer. Foto: Armchair, Wikimedia Commons, CC BY-SA 3.0.</figcaption>
-          </figure>
-          <figure>
-            <img src="images/barrel.jpg" alt="Strammeskrue (barrel adjuster) på bakgiret" width="1280" height="960">
-            <figcaption>Strammeskruen der vaieren går inn i giret. Foto: Armchair, Wikimedia Commons, CC BY-SA 3.0.</figcaption>
-          </figure>
-        </div>
         <figure>
-          <img src="images/hanger.jpg" alt="Kontroll av om girøret er rett, sett bakfra" width="1280" height="1707">
-          <figcaption>Sjekk at girøret er rett. Foto: User:O, Wikimedia Commons, CC BY 3.0.</figcaption>
+          <img src="images/girøre-pa-sykkel.jpg" alt="Kontroll av om girøret er rett, sett bakfra, merket girøre og kassett" width="1460" height="1887">
+          <figcaption>Sjekk at girøret er rett, sett bakfra. Foto: User:O, Wikimedia Commons, CC BY 3.0, merket for denne siden.</figcaption>
         </figure>
       </section>
 
-      <section class="block" id="display">
+      <section class="block" id="armskjell">
+        <h2>Hva betyr «armskjell»?</h2>
+        <p>Ordet ble sagt muntlig og er uklart. Det er ikke et vanlig reservedelsnavn. De to mest nærliggende tolkningene er <strong>krankarm</strong> (armen pedalen sitter på) og <strong>girøre / hanger</strong> (beslagget bakgiret er skrudd i). En tredje mulighet er <strong>krankskall</strong> (huset i rammen der krankakslingen går gjennom), fordi «skjell» og «skall» høres like ut. Dette er en tolkning, ikke en bekreftelse av hva som ble ment. Her er bilder av krankarm og girøre, merket, så du kan peke på den delen du mener.</p>
+        <div class="grid-2">
+          <figure>
+            <img src="images/krankarm.jpg" alt="Kranksett sett utenfra, merket med krankarm, krankbolt og drev" width="1580" height="1501">
+            <figcaption>Krankarm, krankbolt og drev. Dette er et Shimano Deore LX-kranksett, vist som eksempel, ikke nødvendigvis det som sitter på Evo Cross (BH oppgir Shimano Alivio-krank). Foto: Pittigrilli, Wikimedia Commons, CC BY-SA 4.0, merket for denne siden.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/girøre-deler.jpg" alt="Et ødelagt girøre og et nytt girøre liggende på et trebord" width="1580" height="2046">
+            <figcaption>Girøre (hanger) løsrevet: ett ødelagt og ett nytt. Foto: Jberkel, Wikimedia Commons, CC0, merket for denne siden.</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="block" id="video">
+        <h2>Video: stramme giret og bytte gir</h2>
+        <p>Dette avsnittet er for deg som er helt i starten. Videoene er AI-genererte illustrasjoner, ikke opptak av en Evo Cross. De viser prinsippet. Det er den skrevne fremgangsmåten og verktøytabellen som gjelder.</p>
+        <h3>1. Stramme giret (strammeskruen og vaieren)</h3>
+        <figure class="media">
+          <div class="video-wrap">
+            <video controls preload="metadata" width="1280" height="720">
+              <source src="videos/stramme-giret.mp4" type="video/mp4">
+              Nettleseren din støtter ikke video. <a href="videos/stramme-giret.mp4">Last ned videoen</a>.
+            </video>
+          </div>
+          <figcaption>AI-generert illustrasjon av hvordan man dreier strammeskruen (barrel adjuster) på et bakgir. Dette er ikke et opptak av en Evo Cross, og merket på giret i videoen kan være feilstavet. Følg de skrevne stegene.</figcaption>
+        </figure>
+        <ol class="steps">
+          <li>
+            <h3>Sett sykkelen stødig</h3>
+            <p>Ta ut batteriet hvis du skal løsne vaierklemmen eller ta av hjulet. For bare å vri på strammeskruen holder det at sykkelen står stødig og at bakhjulet kan spinne.</p>
+          </li>
+          <li>
+            <h3>Finn strammeskruen</h3>
+            <p>Det er den rillede svarte plastmutteren der vaierhuset går inn i bakgiret. Den skrus med fingrene. Ingen nøkkel.</p>
+          </li>
+          <li>
+            <h3>Små bevegelser</h3>
+            <p>Gir ett klikk opp fra minste drev mens du tråkker sakte rundt (hjulet i stativ eller med bakhjulet fritt). Hopper ikke kjedet over på neste drev: skru strammeskruen ut (mot klokken, løsere hus / strammere vaier) en kvart omdreining og prøv igjen. Hopper det for langt: skru inn.</p>
+          </li>
+          <li>
+            <h3>Hvis vaieren er helt slakk</h3>
+            <p>Da holder det ikke med strammeskruen. Sett giret på minste drev, løsne vaierklemmebolten (se tabellen), trekk vaieren stramt med hånden, trekk til bolten med riktig moment, og finjuster deretter med strammeskruen. Dette er det samme som steg 4 under <a href="#gir">Justere bakgiret</a>.</p>
+          </li>
+        </ol>
+        <h3>2. Bytte gir på styret mens du tråkker</h3>
+        <figure class="media">
+          <div class="video-wrap">
+            <video controls preload="metadata" width="1280" height="720">
+              <source src="videos/bytte-gir.mp4" type="video/mp4">
+              Nettleseren din støtter ikke video. <a href="videos/bytte-gir.mp4">Last ned videoen</a>.
+            </video>
+          </div>
+          <figcaption>AI-generert illustrasjon av en tommelgirhendel på et flatt styre. I klippet står sykkelen i ro på bakken; den viser plasseringen og bevegelsen på hendelen, ikke en ekte sykkeltur. Følg de skrevne stegene, og tråkk mens du girer.</figcaption>
+        </figure>
+        <ol class="steps">
+          <li>
+            <h3>Høyre hendel er bakgiret</h3>
+            <p>På en vanlig Shimano-oppsetning med flatt styre styrer høyre girhendel bakgiret (kassetten), venstre styrer eventuelle drev foran. BH oppgir Acera-hendler og 8 gir bak. Sjekk at det stemmer på din sykkel.</p>
+          </li>
+          <li>
+            <h3>Tråkk jevnt mens du girer</h3>
+            <p>Kjedet må bevege seg for at giret skal skifte. Tråkk lett og jevnt, og gi ett klikk om gangen. Ikke tråkk hardt i et girskift, og ikke gi i det du står stille.</p>
+          </li>
+          <li>
+            <h3>Ett klikk, så vent</h3>
+            <p>Tommelen skyver typisk kjedet innover mot større drev (lettere gir). Den andre spaken (pekeliggeren) slipper vaieren og sender kjedet ut til mindre drev (tyngre gir). Vent til skiftet er ferdig før neste klikk. Hvis det skurrer, se indekseringen under <a href="#gir">Justere bakgiret</a>.</p>
+          </li>
+          <li>
+            <h3>Ikke tving det</h3>
+            <p>Går det ikke over, er det justering eller et bøyd girøre som skal til, ikke mer kraft på hendelen.</p>
+          </li>
+        </ol>
+        <h3>Verktøy du trenger</h3>
+        <p>Størrelsene under er hentet fra Shimanos bakgirmanual og momenttabell, og fra BH sin ev705-spesifikasjon (Alivio 8-gir, Acera-hendler). Eksakt modellnummer på giret ditt er ikke oppgitt av BH, så der det kan variere, står det «vanligvis». Prøv aldri en nøkkel som ikke passer.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Del / steg</th><th>Verktøy</th><th>Moment</th><th>Kilde og merknad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Endestoppskruer H og L</td><td>Stjerneskrutrekker nr. 2 (Phillips #2)</td><td>Bare justering</td><td><span class="badge src">Shimano DM-RD0001:</span> «Top/Low adjustment screw: Screwdriver[#2]». Sjekk om skruene på ditt gir er kryss eller unbrako.</td></tr>
+              <tr><td>B-skrue (end adjust)</td><td>Vanligvis stjerneskrutrekker nr. 2</td><td>Justering. Avstand typisk 5–6 mm mellom øvre trinse og største drev</td><td><span class="badge src">Shimano DM-RD0001</span>. Noen modeller har unbrako i stedet. Sjekk.</td></tr>
+              <tr><td>Vaierklemmebolt</td><td>Vanligvis 4 mm unbrako på nyere Shimano; eldre 8-gir kan ha 5 mm</td><td>6–7 N·m i Shimanos momenttabell for mange MTB-bakgir</td><td><span class="badge src">Shimano DM-TORQUE</span>. Tabellen lister nyere modeller. Sjekk hva som passer i bolten på ditt Alivio 8-gir.</td></tr>
+              <tr><td>Monteringsbolt, bakgir mot girøre</td><td>5 mm unbrako</td><td>8–10 N·m</td><td><span class="badge src">Shimano DM-RD0001 og DM-TORQUE</span></td></tr>
+              <tr><td>Bolt som fester girøret til rammen</td><td>Varierer med rammen (ofte unbrako eller Torx)</td><td>Ikke oppgitt for denne rammen</td><td>Ikke en Shimano-standard. Sjekk bolten på sykkelen.</td></tr>
+              <tr><td>Klembolt på girhendelen</td><td>Vanligvis 5 mm unbrako på Shimano styregir</td><td>Se dealer-manualen for din Acera-hendel</td><td>BH oppgir bare «Shimano Acera», uten modellnummer. Ikke stram på evne.</td></tr>
+              <tr><td>Strammeskrue</td><td>Fingrene, ingen nøkkel</td><td>—</td><td></td></tr>
+              <tr><td>Baknav / bakhjul</td><td>Electric Bike Review (2015) beskriver Evo Cross med hurtigkobling (QR) og egen motorkontakt. Hvis din sykkel har muttere: mål dem.</td><td>—</td><td>Mange navmotorer har 18 mm flatter på akselen, men det er <span class="badge warn">ikke bekreftet</span> for denne modellen. Koble fra motorkabelen før hjulet tas ut.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+<section class="block" id="display">
         <h2>Del 2: Kan et annet display styre motoren?</h2>
         <div class="callout danger">
           <span class="lead">Svar: nei, ikke direkte</span>
@@ -316,7 +542,7 @@
               <tr><th>System</th><th>Protokoll</th><th>Kontakt</th><th>Med BH?</th></tr>
             </thead>
             <tbody>
-              <tr><td>BH Easy Motion (Neo/Evo)</td><td>Seriell, BH-egen, sjekksum</td><td>Fjærpinner i holder + BH-kabel</td><td><span class="badge ok">Original</span></td></tr>
+              <tr><td>BH Emotion / Easy Motion (Neo/Evo)</td><td>Seriell, BH-egen, sjekksum</td><td>Fjærpinner i holder + BH-kabel</td><td><span class="badge ok">Original</span></td></tr>
               <tr><td>KT (KT-LCD3/4/8)</td><td>KT seriell (UART)</td><td>Julet/Higo 5-pin</td><td><span class="badge danger">Nei</span></td></tr>
               <tr><td>Bafang DP-serie</td><td>UART eller CAN, etter modell</td><td>Higo 5-pin</td><td><span class="badge danger">Nei</span></td></tr>
               <tr><td>S866 / Lishui m.fl.</td><td>Egne UART-varianter</td><td>SM / Julet</td><td><span class="badge danger">Nei</span></td></tr>
@@ -328,17 +554,19 @@
         <ul class="plain">
           <li>Fakta: BH-displayet kommuniserer serielt med kontrolleren. Et åpent verktøy (pye-motion, GitHub, 2017) leser disse meldingene og regner sjekksum.</li>
           <li>Fakta: BH-kontrolleren håndterer også TMM4-momentsensoren. Et fremmed display kan ikke erstatte det.</li>
-          <li>Usikkert: Hvilken «Easy Ride» og «Spark» du har. Les merket på displayet eller kontrolleren, så kan jeg sjekke nøyaktig.</li>
-          <li>Eneste display som passer: BH sitt eget, f.eks. V4 sidedisplay (delenr. 386128300), som BH-forhandlere selger.</li>
+          <li>Eneste display som passer uten ombygging: BH sitt eget, f.eks. V4 sidedisplay (delenr. 386128300), som BH-forhandlere selger.</li>
         </ul>
       </section>
 
       <section class="block" id="kobling">
-        <h2>Løsning: koblingsskjema for ny kontroller</h2>
-        <p>Hvis BH-kontrolleren er død og ikke kan skaffes, kan du bytte hele styringen. Motoren er en vanlig børsteløs motor med hall-sensorer. Den bryr seg ikke om hvilken kontroller som driver den. Displayet må da følge den nye kontrolleren.</p>
+        <h2>Koblingsskjema for ny kontroller</h2>
+        <p>Idéen er enkel: den originale BH-kontrolleren og BH-displayet hører sammen og snakker et lukket språk. Hvis den kontrolleren er død og ikke kan skaffes, bytter du ikke bare displayet. Du bytter hele styringen til et sett der kontroller, display, bremsehendler og PAS er laget for hverandre. Motoren er en vanlig børsteløs motor med hall-sensorer. Den bryr seg ikke om merket på kontrolleren, så lenge spenning, faser og hall-rekkefølge er riktig. Momentsensoren TMM4 vil du typisk miste; den erstattes av en enklere PAS-sensor ved kranken.</p>
+
         <figure>
           <img src="images/d3_kobling.png" alt="Koblingsskjema: batteri med sikring til generisk 36 V BLDC-kontroller, tre fasekabler og hall-kabel til navmotor, display, bremsehendler, gass og PAS-sensor" width="1775" height="1159">
+          <figcaption>Ettermarked-sett: 36 V-kontroller med matchende display, sikring i pluss, tre faser og hall-kabel til navmotoren, bremsehendler og PAS. Fargene er typiske eksempler, ikke en garanti. Diagram laget for denne siden.</figcaption>
         </figure>
+        <p>Hva de viktigste ledningene gjør: de to tykke fra batteriet er pluss og minus. De tre tykke til motoren er fasene, som skaper det roterende feltet. De tynne hall-lederne forteller kontrolleren hvor rotoren står. Displaykabelen bærer strøm og den serielle dialogen. Bremsekablene er en enkel bryter som ber kontrolleren kutte kraft. PAS-kabelen forteller at du tråkker.</p>
         <div class="table-wrap">
           <table>
             <thead>
@@ -355,6 +583,7 @@
             </tbody>
           </table>
         </div>
+        <p>Rekkefølge på arbeidet:</p>
         <ol class="steps">
           <li>
             <h3>Dokumenter alt</h3>
@@ -370,7 +599,7 @@
           </li>
           <li>
             <h3>Lag overgang, ikke kapp originalen</h3>
-            <p>Lag en adapterkabel mellom BH-pluggen og den nye kontrolleren. Da kan du gå tilbake.</p>
+            <p>Lag en adapterkabel mellom BH-pluggen og den nye kontrolleren. Da kan du gå tilbake. BH-pluggens pinneplan er ikke publisert, så du må identifisere lederne med måling, ikke etter fargegjetting.</p>
           </li>
           <li>
             <h3>Koble alt, sikring sist</h3>
@@ -446,20 +675,40 @@
         <p>Statens vegvesen (lest 18.11.2026): En elsykkel må ha maks 0,25 kW nominell motoreffekt, gi kraft bare når du tråkker, og koble ut ved 25 km/t. Ren motordrift er lov opp til 6 km/t. Ellers er den en moped, med krav om førerkort, registrering og forsikring. En ombygget sykkel som går over disse grensene kan bare brukes utenfor offentlig vei.</p>
       </section>
 
-      <section class="block" id="kilder">
+            <section class="block" id="kilder">
         <h2>Kilder</h2>
         <div class="sources">
           <a class="source" href="https://www.ashlandelectricbikes.com/wp-content/uploads/Easy-Motion-Neo-Manual.pdf">
-            <span class="title">BH Emotion brukermanual (feilkoder, 36 V, 25 km/t)</span>
-            <span class="meta">ashlandelectricbikes.com · 2. aug. 2012</span>
+            <span class="title">BH Emotion brukermanual (36 V, SET i 3 sekunder, TMM 0,1–3,5 V, feilkoder)</span>
+            <span class="meta">ashlandelectricbikes.com · PDF datert 2. aug. 2012. Offentlig kopi av BH-manualen</span>
           </a>
           <a class="source" href="https://www.bhbikes.com/download/bancorecursos/EBIKE%20DIAGNOSIS%20TOOL%20EN.pdf">
-            <span class="title">BH Ebike diagnosis flows (testverktøy, feilsøking)</span>
+            <span class="title">BH Ebike diagnosis flows (TMM 0,6–2 V i ro, feil 11/12, dødt display, programmering)</span>
             <span class="meta">bhbikes.com · 28. mai 2015</span>
           </a>
-          <a class="source" href="https://electricbikereview.com/easy-motion/evo-27-5/">
-            <span class="title">Easy Motion Evo 27.5 Review (36 V, 11,6 Ah, Dapu)</span>
+          <a class="source" href="https://www.bhbikes.com/en_GB/ebikes/bicicletas-electricas-hibridas-urbanas/evo-cross-ev705">
+            <span class="title">BH Evo Cross ev705 (Alivio 8-gir, Acera, 36 V / 12 Ah, LCD Emotion, Evo RDS)</span>
+            <span class="meta">bhbikes.com</span>
+          </a>
+          <a class="source" href="https://electricbikereview.com/easy-motion/evo-cross/">
+            <span class="title">Easy Motion Evo Cross Review (QR-bakjul, 36 V-system, merkenavn Easy Motion / BH)</span>
             <span class="meta">electricbikereview.com · 2015</span>
+          </a>
+          <a class="source" href="https://si.shimano.com/en/pdfs/dm/RD0001/DM-RD0001-06-ENG.pdf">
+            <span class="title">Shimano MTB Rear Derailleur dealer manual (5 mm / 8–10 N·m, Phillips #2, B-skrue 5–6 mm)</span>
+            <span class="meta">si.shimano.com · DM-RD0001</span>
+          </a>
+          <a class="source" href="https://si.shimano.com/it/pdfs/dm/TORQUE/DM-TORQUE-05-ENG.pdf">
+            <span class="title">Shimano momenttabell (vaierklemme typisk 6–7 N·m, 4 mm unbrako på mange modeller)</span>
+            <span class="meta">si.shimano.com · DM-TORQUE</span>
+          </a>
+          <a class="source" href="https://www.ebikes.ca/documents/Grinfineon_V2.2.pdf">
+            <span class="title">Grinfineon-manual: hall-gass typisk 0,9–3,6 V</span>
+            <span class="meta">ebikes.ca</span>
+          </a>
+          <a class="source" href="https://electricbike.com/forum/forum/kits/golden-motor-magic-pie/70584-guide-to-hall-sensor-throttle-operation-testing-and-modification">
+            <span class="title">Hall-gass, typisk fra ca. 0,8 V i ro</span>
+            <span class="meta">electricbike.com-forum</span>
           </a>
           <a class="source" href="https://www.bhbikes.com/download/bancorecursos/tec_cat/EVO_Cat.pdf">
             <span class="title">BH EVO-katalog (350 W motor, 432 Wh batteri)</span>
@@ -470,11 +719,7 @@
             <span class="meta">forums.electricbikereview.com</span>
           </a>
           <a class="source" href="https://forums.electricbikereview.com/threads/code-03.27854/">
-            <span class="title">Code 03 (momentsensor, skruer ca. 1 Nm)</span>
-            <span class="meta">forums.electricbikereview.com</span>
-          </a>
-          <a class="source" href="https://forums.electricbikereview.com/threads/how-do-i-delimit-my-evo-cross-is-it-simple-to-do-for-a-novice.2991/">
-            <span class="title">Evo Cross motor M155 CN3614, kontroller i skrårøret</span>
+            <span class="title">Code 03 (momentsensor, skruer ca. 1 N·m)</span>
             <span class="meta">forums.electricbikereview.com</span>
           </a>
           <a class="source" href="https://github.com/nasrudin2468/pye-motion">
@@ -485,24 +730,16 @@
             <span class="title">BH V4 sidedisplay 386128300 (kompatibilitet)</span>
             <span class="meta">servicecourse.us</span>
           </a>
-          <a class="source" href="https://endless-sphere.com/sphere/threads/kt-controller-puzzle.116233/">
-            <span class="title">KT-kontroller: PAS, gass, hall og fart</span>
-            <span class="meta">endless-sphere.com</span>
-          </a>
-          <a class="source" href="https://endless-sphere.com/sphere/threads/unknown-contoller.73358/">
-            <span class="title">KT-kontroller krever KT-display</span>
-            <span class="meta">endless-sphere.com</span>
-          </a>
           <a class="source" href="https://www.vegvesen.no/trafikkinformasjon/trafikksikkerhet/sikker-pa-sykkel/tekniske-krav/">
             <span class="title">Tekniske krav til sykkel og elsykkel</span>
             <span class="meta">vegvesen.no · lest 18.11.2026</span>
           </a>
         </div>
-        <p>Bilder: Wikimedia Commons, lisenser oppgitt under hvert bilde. Diagrammene er laget for denne siden.</p>
+        <p>Bilder: Wikimedia Commons, lisenser oppgitt under hvert bilde. Diagrammene er laget for denne siden. Videoene er AI-genererte illustrasjoner.</p>
       </section>
 
       <footer class="site-footer">
-        <p>Statisk veiledning uten byggetrinn. Wikimedia-bildene beholder lisensen som er oppgitt i bildeteksten.</p>
+        <p>Statisk veiledning uten byggetrinn. Wikimedia-bildene beholder lisensen som er oppgitt i bildeteksten. Videoene er AI-genererte illustrasjoner og erstatter ikke de skrevne stegene.</p>
       </footer>
     </main>
   </div>

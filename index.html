@@ -19,6 +19,10 @@
       <h2>Innhold</h2>
       <ol>
         <li><a href="#kort">Kort fortalt</a></li>
+        <li><a href="#plan">Oppdatert plan: slik får du sykkelen til å virke</a></li>
+        <li class="sub"><a href="#plan-a">A. Reparer Neo-displayet</a></li>
+        <li class="sub"><a href="#plan-b">B. Brukt eller nytt BH-display</a></li>
+        <li class="sub"><a href="#plan-c">C. Komplett KT-sett</a></li>
         <li><a href="#system">Hvilken sykkel og hvilket system</a></li>
         <li><a href="#sikkerhet">Sikkerhet før du starter</a></li>
         <li><a href="#kobling-original">Koblingsskjema for Evo Cross</a></li>
@@ -33,6 +37,8 @@
         <li><a href="#armskjell">Hva betyr «armskjell»?</a></li>
         <li><a href="#video">Video: stramme giret og bytte gir</a></li>
         <li><a href="#display">Kan et annet display styre motoren?</a></li>
+        <li><a href="#neo-display">Det originale Neo-displayet</a></li>
+        <li><a href="#ledpanel">LED-panelet i reserve</a></li>
         <li><a href="#kobling">Koblingsskjema for ny kontroller</a></li>
         <li><a href="#regulator">Idéen om spenningsregulator</a></li>
         <li><a href="#lov">Lovverk i Norge</a></li>
@@ -46,6 +52,167 @@
           <span class="lead">Konklusjon</span>
           Prøv å reparere originalsystemet først. De fleste feil er skitne kontakter, batteri i dvale, bremsebryter som henger, eller momentsensoren ved bakhjulet. Et display fra et annet merke vil nesten helt sikkert ikke virke med BH-kontrolleren. Er kontrolleren død, er riktig vei et komplett kontrollersett (kontroller, display, PAS og bremsehendler fra samme leverandør), ikke en spenningsregulator.
         </div>
+        <p><strong>Nytt 18.11.2026:</strong> Det originale displaykortet (NEO-DISPLAY V2) er kartlagt, og det er laget en <a href="#plan">oppdatert plan i tre trinn</a>: reparer displayet, skaff et BH-display, eller bytt til et komplett KT-sett.</p>
+      </section>
+
+      <section class="block core" id="plan">
+        <h2>Oppdatert plan: slik får du sykkelen til å virke</h2>
+        <p>Denne planen bygger på det som er kjent fra BH sine dokumenter, på eierens egne bilder og målinger, og på det som er funnet om det originale Neo-displayet. Den går i rekkefølge etter kostnad og innsats: først det som er billigst og kan reverseres, til slutt full ombygging. Gå til neste trinn først når forrige trinn er avklart.</p>
+        <div class="callout">
+          <span class="lead">Det vi vet nå</span>
+          <span class="badge meas">Eierens observasjon</span> Det originale displaykortet er merket «NEO-DISPLAY V2 2014/10/25 V2.1» og har seks merkede loddepunkter: POWER, BRK, RX, TX, KEY og GND. Det er synlige loddrester og mulig korrosjon langs loddepunktene i kanten. Eieren har også et ekstra LED-panel som trolig er et KT-LED880 (ikke bekreftet), og har målt 0,62 V i ro på én sensor (se <a href="#sensor">sensorspenning</a>).<br>
+          <span class="badge hyp">Tolkning, ikke bekreftet</span> Displayet snakker digitalt (seriell UART) med kontrolleren over RX og TX, får strøm på POWER og GND, bruker KEY som vekke-/startsignal og BRK for bremsesignal. Se <a href="#neo-display">Det originale Neo-displayet</a>.
+        </div>
+        <figure>
+          <img src="images/d6_plan_flyt.png" alt="Flytdiagram: start med dødt display og fulladet batteri. A: reparer originalt Neo-display og mål POWER–GND. Hvis det ikke virker, B: skaff brukt eller nytt BH-display. Hvis det heller ikke virker, er kontrolleren trolig feil, og C: komplett KT-sett." width="1425" height="1762">
+          <figcaption>Beslutningstre for Evo Cross med dødt display. Diagram laget for denne siden. Delenumrene i trinn B er hentet fra forhandlere og er ikke bekreftet av BH for akkurat denne sykkelen.</figcaption>
+        </figure>
+        <div class="callout warning">
+          <span class="lead">Før du begynner</span>
+          Ta ut batteriet for alt du gjør med kabler, unntatt de målingene som sier «batteriet på». Når batteriet er på: hold målepinnene på ett loddepunkt hver, og ikke la en pinne gli over til nabopunktet. En kortslutning mellom POWER og et signalpunkt kan ødelegge displayet eller kontrolleren.
+        </div>
+
+        <h3 id="plan-a">A. Reparer det originale Neo-displayet</h3>
+        <p>Lav kostnad. Det du trenger er et multimeter, isopropanol (isopropylalkohol, 90–99 %), en myk tannbørste eller bomullspinner, og god belysning, gjerne med lupe eller mobilkamera med zoom. Lodding er bare nødvendig hvis en ledning har løsnet. Hvis du aldri har loddet, er det en grei jobb å be noen med erfaring om.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Sjekk</th><th>Hva du trenger</th><th>Hva du måler eller ser etter</th><th>Hva resultatet betyr</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1. Se over kortet</td>
+                <td>Lys, lupe eller mobilkamera</td>
+                <td>Grønt eller hvitt belegg, sprukne loddepunkter, ledere som er løse eller har løsnet fra de seks loddepunktene, brente komponenter</td>
+                <td>Belegg: rens (neste rad). Løs leder: må loddes fast. Brent komponent: kortet er trolig ødelagt, gå til B</td>
+              </tr>
+              <tr>
+                <td>2. Rens</td>
+                <td>Isopropanol 90–99 %, myk børste, bomullspinner. Batteriet ute</td>
+                <td>Børst forsiktig rundt loddepunktene og kontaktene. La tørke helt, minst 30 minutter, før du setter på strøm</td>
+                <td>Korrosjon kan gi brudd eller lekkstrøm mellom punkter. Rens alene kan løse en feil, men ikke regn med det</td>
+              </tr>
+              <tr>
+                <td>3. POWER–GND</td>
+                <td>Multimeter på DC volt, område over 42 V. Batteriet på, displayet koblet til kabelen</td>
+                <td>Rød pinne på POWER, svart på GND. Mål først uten å trykke, så mens du holder på-knappen inne (SET i 3 sekunder ifølge BH-manualen 2012)</td>
+                <td><span class="badge hyp">Uverifisert</span> Hvis POWER er batteri+, ventes omtrent 36–42 V (pakkespenning). En lavere fast spenning, f.eks. rundt 5 eller 12 V, kan bety at kontrolleren gir regulert strøm; det er ikke nødvendigvis en feil. 0 V: strømmen kommer ikke fram til displayet. Sjekk kabel og holder (rad 4), deretter kontrolleren</td>
+              </tr>
+              <tr>
+                <td>4. Gjennomgang i kabelen</td>
+                <td>Multimeter på gjennomgang (pipelyd). Batteriet ute</td>
+                <td>Fra hvert av de seks loddepunktene til pinnene i pluggen i den andre enden av kabelen, mot kontrolleren. Mål også mellom alle par av ledere</td>
+                <td>Hver leder piper til nøyaktig én pinne: kabelen er hel. Ingen pip: brudd. Pip mellom to ulike ledere: kortslutning. BH sin feilsøking nevner en 5-pinners kontakt mellom display og kontroller <span class="badge src">BH 2015</span>, så en av de seks lederne kan være ubrukt eller gå et annet sted. Noter hva du finner</td>
+              </tr>
+              <tr>
+                <td>5. KEY</td>
+                <td>Multimeter på DC volt. Batteriet på</td>
+                <td>Rød pinne på KEY, svart på GND. Trykk og hold på-knappen</td>
+                <td><span class="badge hyp">Tolkning</span> Spenningen bør endre seg tydelig når du trykker, f.eks. gå høy. Ingen endring: knappen, kortet eller ledningen kan være feil. Hvordan KEY oppfører seg på dette kortet, er ikke dokumentert offentlig</td>
+              </tr>
+              <tr>
+                <td>6. BRK</td>
+                <td>Multimeter på DC volt. Batteriet på</td>
+                <td>Rød pinne på BRK, svart på GND. Klem hver bremsehendel for seg</td>
+                <td>Spenningen bør skifte når du bremser og gå tilbake når du slipper. Hvis den står fast i «brems»-stilling, kan kontrolleren holde assistansen av. Hvilket nivå som betyr «brems», er ikke bekreftet</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="plan-b">B. Skaff et brukt eller nytt BH-display</h3>
+        <p>Middels kostnad, lite arbeid. Dette er det BH selv gjør først ved kommunikasjonsfeil: bytte display og se om det nye virker <span class="badge src">BH diagnosis 2015</span>. Et kjent godt BH-display skiller samtidig mellom feil i displayet og feil i kontrolleren.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Sjekk</th><th>Hva du trenger</th><th>Hva du sjekker</th><th>Hva resultatet betyr</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Finn riktig del</td>
+                <td>Bilder av ditt display, holderen og pluggen</td>
+                <td>Rund eller firkantet kontakt. Biciclick skriver at det originale BH-displayet for Neo/EVO/Nitro/EasyGo har rund kontakt, og at noen Atom-modeller har firkantet hvit kontakt <span class="badge src">biciclick.es</span></td>
+                <td>Kjøp bare et display med samme kontakttype som din sykkel</td>
+              </tr>
+              <tr>
+                <td>Delenumre</td>
+                <td>Delenummeret når du spør forhandler</td>
+                <td>Neo-konsoll: SKU 3861076000, oppgitt i en forhandlerlenke fra 2016 <span class="badge warn">gammel kilde</span>. BH V4 sidedisplay 386128300: forhandleren Service Course oppgir at det passer EVO (også Cross) og NEO <span class="badge warn">forhandlerens påstand</span></td>
+                <td>Be en BH-forhandler bekrefte delenummeret mot rammenummeret ditt før du kjøper. Delen kan være utgått</td>
+              </tr>
+              <tr>
+                <td>Test</td>
+                <td>Lånt eller kjøpt BH-display, fulladet batteri</td>
+                <td>Sett det i holderen og slå på med SET i 3 sekunder</td>
+                <td>Virker: feilen var i det gamle displayet. Virker ikke: feilen sitter trolig i holder, kabel eller kontroller. BH sin rekkefølge er display, så holder, så kontroller, så kabler <span class="badge src">BH 2015</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="plan-c">C. Komplett KT-sett, hvis BH-kontrolleren er feil eller BH-display ikke finnes</h3>
+        <p>Størst kostnad og arbeid. Her byttes hele styringen. Motoren og batteriet beholdes. Det eieren allerede har av LED-panel (se <a href="#ledpanel">LED-panelet</a>) passer bare hvis det faktisk er et KT-panel. Det tryggeste er å kjøpe kontroller og panel som et sett fra samme selger.</p>
+        <figure>
+          <img src="images/koblingsskjema-ledpanel-36v.png" alt="Koblingsskjema: 36 V-batteri, 20 A sikring, nøkkelbryter, generisk 36 V-kontroller, tre faser og fem hall-ledere til navmotoren, gassinngang med hall-gass eller potensiometer, bremsesensorer, valgfri PAS-sensor og LED-panel via 5-leder UART-kabel med uverifisert pinnefordeling" width="3263" height="2263">
+          <figcaption>Typisk oppsett for KT-kontroller med LED-panel. Stiplede ledere er ikke bekreftet for dette panelet. Ikke et pinneoppsett for BH-originalen. Diagram laget for denne siden.</figcaption>
+        </figure>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Del eller steg</th><th>Hva du trenger</th><th>Hva du måler</th><th>Hva resultatet betyr</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Delene</td>
+                <td>36 V KT-kontroller (15–17 A, sinus, hall) med matchende KT-LED880-panel, PAS-sensor (tråkkfrekvens), bremsehendler med bryter, 20 A sikring, 2,5 mm² ledning til batteri og faser. Gass er valgfritt</td>
+                <td>Sjekk at kontrolleren er oppgitt for 36 V og at panelet selges som kompatibelt med akkurat den kontrolleren</td>
+                <td>KT-panel virker bare med KT-kontroller <span class="badge src">Kunteng, Emotoer</span></td>
+              </tr>
+              <tr>
+                <td>1. Dokumenter</td>
+                <td>Mobilkamera, tape og penn</td>
+                <td>Ta bilder av alle kontakter. Merk hver ledning før du kobler fra</td>
+                <td>Gjør at du kan gå tilbake til originalen</td>
+              </tr>
+              <tr>
+                <td>2. Faser</td>
+                <td>Multimeter på motstand (Ω). Batteriet ute</td>
+                <td>Mål mellom de tre tykke motorlederne, alle tre par</td>
+                <td>Like lave verdier på alle par: viklingene er hele. Ett par mye høyere eller brudd: motorfeil</td>
+              </tr>
+              <tr>
+                <td>3. Hall-ledere</td>
+                <td>Multimeter på DC volt, 5 V tilført fra den nye kontrolleren</td>
+                <td>Hvert av de tre signalene mot jord mens du dreier hjulet sakte</td>
+                <td>Veksler mellom ca. 0 og 5 V: sensoren virker. Står fast: sensor eller ledning er feil</td>
+              </tr>
+              <tr>
+                <td>4. Koble</td>
+                <td>Adapterkabel, ikke kapp originalen. Sikring rett etter batteri+</td>
+                <td>Følg skjemaet som følger kontrolleren. Ikke stol på farger alene; mål panelpluggen (rød/svart er typisk B+/jord, blå/grønn/gul er usikre)</td>
+                <td>Feil pinne kan ødelegge panel eller kontroller</td>
+              </tr>
+              <tr>
+                <td>5. Første test</td>
+                <td>Hjulet fritt i stativ, laveste hjelpenivå</td>
+                <td>Bruk selvlæring hvis kontrolleren har det. Ellers prøv fase/hall-kombinasjoner</td>
+                <td>Går jevnt og stille med lite strøm: riktig. Rykker, brummer eller går baklengs: feil kombinasjon</td>
+              </tr>
+              <tr>
+                <td>6. Bremser og grenser</td>
+                <td>Bremsehendler koblet til</td>
+                <td>Klem bremsen mens hjulet går. Sett fartsgrense 25 km/t og riktig hjulstørrelse</td>
+                <td>Motoren skal stoppe med en gang du bremser. Gjør den ikke det, skal sykkelen ikke brukes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout danger">
+          <span class="lead">Potensiometer i stedet for gass</span>
+          Et 10 kΩ lineært potensiometer kan teknisk erstatte gasshåndtaket (ytterbena til +5 V og jord, midtbenet til signal). Det har ingen fjær som drar det tilbake til null, så motoren kan fortsette å dra hvis du slipper. Mange kontrollere blokkerer også gassen hvis signalet er høyt når du slår på. Bruk det bare med bremsebrytere som kutter motoren, og helst ikke i det hele tatt. Et ekte hall-gasshåndtak med fjærretur, eller bare PAS, er tryggere. Gass som driver uten tråkk over 6 km/t gjør at sykkelen ikke lenger er en vanlig elsykkel (se <a href="#lov">lovverk</a>).
+        </div>
+        <p>Du mister BH-kontrollerens vern (overstrøm, overoppheting, TMM-tolking og BH-feilkoder) og momentsensoren. Batteriets egen BMS virker fortsatt, men den beskytter ikke mot en motor som drar ukontrollert. Mer om deler og rekkefølge står i <a href="#kobling">Koblingsskjema for ny kontroller</a>.</p>
+        <p class="note"><strong>Instruksjonsvideo kommer:</strong> En instruksjonsvideo som går gjennom koblingsskjemaet trinn for trinn, er under arbeid. Den legges ut her når den er ferdig.</p>
       </section>
 
       <section class="block" id="system">
@@ -554,8 +721,74 @@
         <ul class="plain">
           <li>Fakta: BH-displayet kommuniserer serielt med kontrolleren. Et åpent verktøy (pye-motion, GitHub, 2017) leser disse meldingene og regner sjekksum.</li>
           <li>Fakta: BH-kontrolleren håndterer også TMM4-momentsensoren. Et fremmed display kan ikke erstatte det.</li>
-          <li>Eneste display som passer uten ombygging: BH sitt eget, f.eks. V4 sidedisplay (delenr. 386128300), som BH-forhandlere selger.</li>
+          <li>Eneste display som passer uten ombygging: BH sitt eget. Forhandlere oppgir Neo-konsoll SKU 3861076000 (kilde fra 2016) og V4 sidedisplay 386128300 (oppgitt å passe EVO og NEO). Se <a href="#plan-b">plan B</a>.</li>
         </ul>
+      </section>
+
+      <section class="block" id="neo-display">
+        <h2>Det originale Neo-displayet (kretskortet)</h2>
+        <p><span class="badge meas">Eierens observasjon (foto 18.11.2026)</span> Displaykortet fra sykkelen er merket <strong>«NEO-DISPLAY V2 2014/10/25 V2.1»</strong>. Det har seks merkede loddepunkter for kabelen: <strong>POWER, BRK, RX, TX, KEY og GND</strong>. Nederst sitter en mikrokontroller i QFP-hus (firkantet brikke med ben på alle sider), og det er et lite 4-pinners hode. Langs loddepunktene i kanten er det synlige loddrester og mulig korrosjon.</p>
+<!-- OWNER-PHOTO-NEO
+        <figure>
+          <img src="images/neo-display-v2-kort.jpg" alt="Kretskortet i det originale BH-displayet, merket NEO-DISPLAY V2 2014/10/25 V2.1, med seks loddepunkter merket POWER, BRK, RX, TX, KEY og GND" loading="lazy">
+          <figcaption>Det originale displaykortet fra eierens Evo Cross. Legg merke til loddrestene og den mulige korrosjonen langs loddepunktene i kanten. Foto: eieren.</figcaption>
+        </figure>
+OWNER-PHOTO-NEO -->
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Loddepunkt</th><th>Sannsynlig funksjon</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>POWER</td><td>Strøm inn til displayet, trolig batterispenning fra kontrolleren</td><td><span class="badge hyp">Tolkning</span> mål det (plan A, rad 3)</td></tr>
+              <tr><td>GND</td><td>Jord, felles minus</td><td><span class="badge hyp">Tolkning</span> svært sannsynlig ut fra navnet</td></tr>
+              <tr><td>RX</td><td>Displayet tar imot data fra kontrolleren (fart, batteri, feilkoder)</td><td><span class="badge hyp">Tolkning</span> RX/TX kan være navngitt fra displayets eller kontrollerens side</td></tr>
+              <tr><td>TX</td><td>Displayet sender data til kontrolleren (hjelpenivå, knapper)</td><td><span class="badge hyp">Tolkning</span></td></tr>
+              <tr><td>KEY</td><td>Vekke- eller startsignal til kontrolleren når du holder på-knappen</td><td><span class="badge hyp">Tolkning</span> mål det (plan A, rad 5)</td></tr>
+              <tr><td>BRK</td><td>Bremsesignal (displayet viser bremseikon, kontrolleren kutter assistansen)</td><td><span class="badge hyp">Tolkning</span> BH sitt testverktøy viser bremseikon på displayet når bremsen aktiveres <span class="badge src">BH 2015</span></td></tr>
+              <tr><td>4-pinners hode</td><td>Trolig for programmering eller feilsøking av mikrokontrolleren</td><td><span class="badge warn">Uverifisert</span> ikke koble noe til det</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Hva som er funnet om Neo-displayet</h3>
+        <ul class="plain">
+          <li><span class="badge src">Kjent</span> BH sin feilsøkingsguide (2015) gjelder både NEO og EVO, og nevner en 5-pinners kontakt mellom display og kontroller. Ved feil 13 (kommunikasjon) er rekkefølgen: bytt display, så displayholder, så kontroller, så kabler. BH har egne testverktøy for display, holder og kontroller, som bare forhandlere har.</li>
+          <li><span class="badge src">Kjent fra åpen kilde</span> Verktøyet pye-motion (GitHub, 2017) leser meldingene mellom display og kontroller på BH EVO. Innstillingene i verktøyet er 9600 baud, 8 databiter, ingen paritet, 1 stoppbit, og byggeanvisningen bruker en USB-seriell-adapter satt til 3,3 V logikknivå. Det støtter at linken er en vanlig seriell UART med BH-egne meldinger og sjekksum. Det er skrevet for EVO, ikke spesifikt for Neo-displayet V2.</li>
+          <li><span class="badge warn">Ikke funnet</span> Ingen offentlig pinnefordeling, spenningsnivå på POWER eller beskrivelse av KEY/BRK for kortet «NEO-DISPLAY V2» er funnet. Generelle artikler om 5-pinners displaykontakter beskriver samme type ledere (strøm, jord, TX, RX, KEY), men de gjelder ikke BH spesielt.</li>
+          <li><span class="badge src">Forhandlere</span> Erstatning: Neo-konsoll med SKU 3861076000 (forhandlerlenke sitert i 2016), BH-display for Neo/EVO/Nitro/EasyGo med rund kontakt (biciclick.es), og V4 sidedisplay 386128300 som forhandleren oppgir passer EVO og NEO (servicecourse.us). Se <a href="#plan-b">plan B</a>.</li>
+        </ul>
+        <p><span class="badge hyp">Konsekvens</span> Kortet bekrefter at det originale displayet snakker digitalt med kontrolleren. Et display fra et annet merke vil derfor ikke virke med BH-kontrolleren, selv om flere ledere har samme navn.</p>
+      </section>
+
+      <section class="block" id="ledpanel">
+        <h2>LED-panelet eieren har i reserve</h2>
+        <p><span class="badge meas">Eierens observasjon (foto 18.11.2026)</span> Et enkelt LED-panel uten tallskjerm: fire batteri-LED øverst, fire lamper for lys, LOW, MED og HIGH, en lysknapp, en rød av/på-knapp og en MODE-knapp. Kabelen ender i en rund, vanntett hannplugg i Julet/Higo-stil.</p>
+<!-- OWNER-PHOTO-LED
+        <figure>
+          <img src="images/ledpanel-reserve.jpg" alt="Generisk LED-panel med fire batteri-LED, lampene lys, LOW, MED og HIGH, lysknapp, rød av/på-knapp, MODE-knapp og rund vanntett plugg" loading="lazy">
+          <figcaption>Reservepanelet. Trolig et KT-LED880 eller en kopi, ikke bekreftet. Foto: eieren.</figcaption>
+        </figure>
+OWNER-PHOTO-LED -->
+        <ul class="plain">
+          <li><span class="badge hyp">Mest sannsynlig modell, ikke bekreftet</span> KT-LED880 fra Suzhou Kunteng, eller en kopi. Det har samme oppsett: fire batteri-LED, LOW/MED/HIGH, lys, av/på og MODE, 5-leders digital kommunikasjon og 36/48 V. Etiketten på baksiden og antall pinner i pluggen er ikke sjekket ennå.</li>
+          <li><span class="badge src">Kjent</span> KT-LED880 virker bare med KT-kontrollere <span class="badge src">Kunteng, Emotoer</span>. Det skal ikke kobles til BH-kontrolleren.</li>
+          <li><span class="badge src">Kjent</span> Panelet sender ikke et 1–4 V gassignal. MODE bytter LOW/MED/HIGH digitalt. Fart med gass kommer fra et eget 3-pinners gasshåndtak (+5 V, jord, signal), typisk ca. 0,8–0,9 V i ro til ca. 3,6–4,2 V ved fullt pådrag.</li>
+        </ul>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Leder (typisk farge)</th><th>KT-LCD3-manualen / forum</th><th>WattWorks (KT LCD3/LED890)</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Rød</td><td>Batteri+ (pakkespenning, ikke 5 V)</td><td>Batteri+</td><td>Typisk, men mål</td></tr>
+              <tr><td>Svart</td><td>Jord</td><td>Jord</td><td>Typisk, men mål</td></tr>
+              <tr><td>Blå</td><td>Elektrisk lås (koblet B+ som starter kontrolleren)</td><td>UART TX</td><td><span class="badge warn">Uverifisert</span> kildene er uenige</td></tr>
+              <tr><td>Grønn</td><td>UART TX</td><td>UART RX</td><td><span class="badge warn">Uverifisert</span></td></tr>
+              <tr><td>Gul</td><td>UART RX</td><td>Lys</td><td><span class="badge warn">Uverifisert</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Ikke stol på fargene. Sjekk etiketten, mål gjennomgang mot kjente punkter, eller bruk manualen som følger med kontrolleren. Koblingsskjemaet står under <a href="#plan-c">plan C</a>.</p>
       </section>
 
       <section class="block" id="kobling">
@@ -730,12 +963,40 @@
             <span class="title">BH V4 sidedisplay 386128300 (kompatibilitet)</span>
             <span class="meta">servicecourse.us</span>
           </a>
+          <a class="source" href="https://github.com/nasrudin2468/pye-motion/blob/master/pye-motion.cfg">
+            <span class="title">pye-motion: serieinnstillinger for BH EVO (9600 baud, 8N1)</span>
+            <span class="meta">github.com · 2017</span>
+          </a>
+          <a class="source" href="https://github.com/nasrudin2468/pye-motion/tree/master/documentation">
+            <span class="title">pye-motion: byggeanvisning for adapterkabel (USB-seriell, 3,3 V logikk)</span>
+            <span class="meta">github.com · 22.10.2017</span>
+          </a>
+          <a class="source" href="https://www.biciclick.es/display-bh-e-motion-neo">
+            <span class="title">BH-display for EVO/NEO/NITRO/EASY GO (rund kontakt)</span>
+            <span class="meta">biciclick.es</span>
+          </a>
+          <a class="source" href="https://www.mlarchive.de/Olympus-OM/2016-01/msg00820.html">
+            <span class="title">Neo-konsoll, SKU 3861076000 (sitert fra Electric Cyclery)</span>
+            <span class="meta">mlarchive.de · januar 2016</span>
+          </a>
+          <a class="source" href="http://www.szktdz.com/ProDetail.aspx?ProId=43">
+            <span class="title">KT-LED880 (femleder digital kommunikasjon, bare KT-kontroller)</span>
+            <span class="meta">Suzhou Kunteng</span>
+          </a>
+          <a class="source" href="https://www.emotoer.com/kt-led880-display/">
+            <span class="title">KT LED880 36/48 V: bare kompatible KT-kontrollere</span>
+            <span class="meta">emotoer.com</span>
+          </a>
+          <a class="source" href="https://wattworks.bike/components/kt-led890">
+            <span class="title">KT LED890 og KT LCD3: pinnetabell (avviker fra LCD3-manualen)</span>
+            <span class="meta">wattworks.bike · oppdatert 29.05.2026</span>
+          </a>
           <a class="source" href="https://www.vegvesen.no/trafikkinformasjon/trafikksikkerhet/sikker-pa-sykkel/tekniske-krav/">
             <span class="title">Tekniske krav til sykkel og elsykkel</span>
             <span class="meta">vegvesen.no · lest 18.11.2026</span>
           </a>
         </div>
-        <p>Bilder: Wikimedia Commons, lisenser oppgitt under hvert bilde. Diagrammene er laget for denne siden. Videoene er AI-genererte illustrasjoner.</p>
+        <p>Bilder: Wikimedia Commons, lisenser oppgitt under hvert bilde. Bilder merket «Foto: eieren» er eierens egne. Diagrammene er laget for denne siden. Videoene er AI-genererte illustrasjoner.</p>
       </section>
 
       <footer class="site-footer">
